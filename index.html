@@ -1,481 +1,502 @@
-<title>Careful Life — অ্যাপ ডেমো</title>
+<title>CareLife — Health Super App Demo</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <style>
-  :root {
-    --paper:#E9EDEA; --surface:#FFFFFF; --surface-2:#F4F6F4; --line:#D6DDD8;
-    --line-soft:#E4E9E6; --ink:#0D1F1A; --ink-2:#52645C; --ink-3:#7C8C85;
-    --brand:#0F5D4C; --brand-2:#0A3D31; --brand-tint:#E1EDE8;
-    --brass:#A87524; --brass-tint:#F3E9D4;
-    --ok:#2E7D52; --warn:#B4761A; --alert:#A63A2E;
-    --shadow-lo: 0 1px 2px rgba(13,31,26,.06), 0 2px 8px rgba(13,31,26,.04);
-    --shadow-hi: 0 24px 60px rgba(13,31,26,.20), 0 6px 18px rgba(13,31,26,.10);
-    --ui: system-ui,-apple-system,"Segoe UI",Roboto,"Hind Siliguri","Noto Sans Bengali","Kohinoor Bangla","Bangla MN",sans-serif;
-    --display:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --paper:#0A100E; --surface:#131E1A; --surface-2:#1A2723; --line:#263631;
-      --line-soft:#1E2C27; --ink:#E9F0EC; --ink-2:#9EB0A8; --ink-3:#74867F;
-      --brand:#4FB79C; --brand-2:#2A6E5C; --brand-tint:#16302A;
-      --brass:#D6A651; --brass-tint:#302713;
-      --ok:#52B37E; --warn:#D69A3F; --alert:#D97462;
-      --shadow-lo: 0 1px 2px rgba(0,0,0,.4), 0 2px 8px rgba(0,0,0,.25);
-      --shadow-hi: 0 24px 60px rgba(0,0,0,.6), 0 6px 18px rgba(0,0,0,.4);
-    }
-  }
-  :root[data-theme="light"]{
-    --paper:#E9EDEA;--surface:#FFFFFF;--surface-2:#F4F6F4;--line:#D6DDD8;
-    --line-soft:#E4E9E6;--ink:#0D1F1A;--ink-2:#52645C;--ink-3:#7C8C85;
-    --brand:#0F5D4C;--brand-2:#0A3D31;--brand-tint:#E1EDE8;--brass:#A87524;
-    --brass-tint:#F3E9D4;--ok:#2E7D52;--warn:#B4761A;--alert:#A63A2E;
-    --shadow-lo:0 1px 2px rgba(13,31,26,.06),0 2px 8px rgba(13,31,26,.04);
-    --shadow-hi:0 24px 60px rgba(13,31,26,.20),0 6px 18px rgba(13,31,26,.10);
-  }
-  :root[data-theme="dark"]{
-    --paper:#0A100E;--surface:#131E1A;--surface-2:#1A2723;--line:#263631;
-    --line-soft:#1E2C27;--ink:#E9F0EC;--ink-2:#9EB0A8;--ink-3:#74867F;
-    --brand:#4FB79C;--brand-2:#2A6E5C;--brand-tint:#16302A;--brass:#D6A651;
-    --brass-tint:#302713;--ok:#52B37E;--warn:#D69A3F;--alert:#D97462;
-    --shadow-lo:0 1px 2px rgba(0,0,0,.4),0 2px 8px rgba(0,0,0,.25);
-    --shadow-hi:0 24px 60px rgba(0,0,0,.6),0 6px 18px rgba(0,0,0,.4);
+  :root{
+    /* brand */
+    --cy:#0FADD4; --cy-2:#0894BA; --cy-3:#57C9E4; --cy-tint:#E6F6FB; --cy-soft:#F2FBFD;
+    --mg:#A22A8F; --mg-2:#7E1F73; --mg-tint:#F8EDF6;
+    --grad-brand:linear-gradient(135deg,#A22A8F 0%,#6E3B9E 45%,#0FADD4 100%);
+
+    /* neutrals */
+    --page:#FFFFFF; --surface:#FFFFFF; --surface-2:#F7F9FA; --paper:#E7ECEE;
+    --line:#E6EAEC; --line-2:#D9DFE2;
+    --ink:#151A1C; --ink-2:#5E6A70; --ink-3:#95A1A7;
+
+    --ok:#1E9E5A; --ok-tint:#E8F7EE; --warn:#C97A12; --alert:#C8382B;
+
+    --sh-lo:0 1px 2px rgba(16,32,38,.05), 0 2px 10px rgba(16,32,38,.045);
+    --sh-md:0 6px 20px rgba(16,32,38,.10);
+    --sh-hi:0 26px 64px rgba(16,32,38,.24), 0 6px 18px rgba(16,32,38,.12);
+
+    --ui:system-ui,-apple-system,"Segoe UI",Roboto,"Hind Siliguri","Noto Sans Bengali",sans-serif;
+    --r-sm:10px; --r:14px; --r-lg:18px; --r-xl:24px;
   }
 
-  * { box-sizing: border-box; }
-  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-  body {
-    margin:0; min-height:100vh; overflow-x:hidden;
-    background:
-      radial-gradient(90% 60% at 50% 0%, color-mix(in srgb, var(--brand) 7%, transparent) 0%, transparent 70%),
-      var(--paper);
-    color: var(--ink); font-family: var(--ui);
-    -webkit-font-smoothing: antialiased; line-height:1.5;
-    display:grid; place-items:center; padding:34px 16px 44px;
-    -webkit-tap-highlight-color: transparent;
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+  body{
+    margin:0;min-height:100vh;overflow-x:hidden;
+    background:radial-gradient(80% 50% at 50% 0%, rgba(15,173,212,.10) 0%, transparent 68%), var(--paper);
+    color:var(--ink);font-family:var(--ui);line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+    /* flex, not grid: a grid column sizes to the photos' intrinsic widths,
+       which makes .device's max-width:100% resolve against ~900px */
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:30px 16px 40px;
+    -webkit-tap-highlight-color:transparent;
   }
-  /* Tapping a control should activate it, never select its label. */
-  button, .tapp, .chip, .qa, .qr-btn, .av.add, .tab, .renew, .aistrip, .langtog {
-    touch-action: manipulation;
-    -webkit-user-select: none;
-    user-select: none;
-  }
+  button{font:inherit;color:inherit;}
+  img{display:block;max-width:100%;}
+  /* every photo fills its slot and crops rather than distorts */
+  .ph{width:100%;height:100%;object-fit:cover;background:var(--surface-2);}
+  button,.tapp,.chip,.tab,.tile,.svc{touch-action:manipulation;-webkit-user-select:none;user-select:none;}
+
   .tagpill{
-    display:inline-flex;align-items:center;gap:7px;margin-bottom:22px;
-    padding:5px 13px;border:1px solid var(--brass);border-radius:999px;
-    color:var(--brass);background:var(--brass-tint);
-    font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    display:inline-flex;align-items:center;gap:7px;margin-bottom:20px;
+    padding:5px 13px;border:1px solid var(--cy);border-radius:999px;
+    color:var(--cy-2);background:var(--cy-tint);
+    font-size:.64rem;font-weight:750;letter-spacing:.11em;text-transform:uppercase;
   }
   .tagpill::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor;}
 
-  /* ============ device ============ */
-  .device{
-    width:390px;max-width:100%;background:#0B0F0E;border-radius:46px;
-    padding:11px;box-shadow:var(--shadow-hi);
-  }
+  /* ================= device ================= */
+  .device{width:390px;max-width:100%;background:#0A0E10;border-radius:46px;padding:11px;box-shadow:var(--sh-hi);}
   .screen{
-    position:relative;height:800px;background:var(--surface-2);
-    border-radius:36px;overflow:hidden;display:flex;flex-direction:column;font-size:15px;
+    position:relative;height:812px;background:var(--page);border-radius:36px;
+    overflow:hidden;display:flex;flex-direction:column;font-size:15px;
   }
-  @media (max-height:900px){ .screen{height:720px;} }
+  @media (max-height:920px){ .screen{height:730px;} }
   .island{position:absolute;top:9px;left:50%;transform:translateX(-50%);
-    width:92px;height:24px;background:#0B0F0E;border-radius:999px;z-index:60;}
+    width:92px;height:24px;background:#0A0E10;border-radius:999px;z-index:80;}
 
   .statusbar{
     flex:none;display:flex;justify-content:space-between;align-items:center;
-    padding:14px 22px 5px;font-size:12px;font-weight:650;
-    font-variant-numeric:tabular-nums;background:var(--surface);color:var(--ink);
-    z-index:20;
+    padding:13px 22px 4px;font-size:12px;font-weight:650;
+    font-variant-numeric:tabular-nums;color:var(--ink);z-index:30;background:transparent;
   }
   .statusbar .sig{display:flex;gap:4px;align-items:center;opacity:.85;}
   .sbar{width:3px;background:currentColor;border-radius:1px;}
-  .screen.immersive .statusbar{background:#08110E;color:#E7EFEB;}
+  .screen.onlight .statusbar{color:#fff;}
 
-  .stack{flex:1;min-height:0;display:flex;}
-  .view{display:none;flex:1;min-width:0;flex-direction:column;background:var(--surface-2);}
+  .stack{flex:1;min-height:0;display:flex;position:relative;}
+  .view{display:none;flex:1;min-width:0;flex-direction:column;background:var(--page);}
   .view.on{display:flex;}
 
-  /* ============ headers ============ */
-  .appbar{
-    flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
-    padding:6px 18px 13px;background:var(--surface);border-bottom:1px solid var(--line-soft);
-  }
-  .hello .eyebrow{font-size:11px;color:var(--ink-3);letter-spacing:.05em;
-    text-transform:uppercase;font-weight:650;}
-  .hello .who{font-size:17px;font-weight:650;letter-spacing:-.01em;margin-top:1px;}
-  .tools{display:flex;align-items:center;gap:8px;}
+  /* ================= brand mark ================= */
+  .logo{display:inline-flex;align-items:flex-end;line-height:1;}
+  .logo svg{display:block;height:auto;}
 
-  .nav{
-    flex:none;display:flex;align-items:center;gap:10px;
-    padding:8px 14px 12px;background:var(--surface);border-bottom:1px solid var(--line-soft);
+  /* ================= app header (home / listing) ================= */
+  .apphead{
+    flex:none;padding:6px 16px 14px;
+    background:linear-gradient(120deg,#E4F5FA 0%,#EFF3FB 48%,#F9EDF5 100%);
+    border-bottom-left-radius:var(--r-xl);border-bottom-right-radius:var(--r-xl);
+    box-shadow:0 6px 18px rgba(16,32,38,.06);z-index:20;
   }
-  .nav .back{
-    width:32px;height:32px;flex:none;display:grid;place-items:center;
-    border:1px solid var(--line);border-radius:50%;background:var(--surface);
-    color:var(--ink-2);cursor:pointer;
-  }
-  .nav .back:hover{border-color:var(--brand);color:var(--brand);}
-  .nav h1{margin:0;font-size:15px;font-weight:650;letter-spacing:-.005em;
-    flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-  .nav .sub{display:block;font-size:10.5px;font-weight:500;color:var(--ink-3);margin-top:1px;}
+  .apphead .row1{display:flex;align-items:center;gap:10px;padding:4px 2px 12px;}
+  .apphead .sp{flex:1;}
 
-  .langtog{display:inline-flex;padding:2px;background:var(--surface-2);
-    border:1px solid var(--line);border-radius:999px;flex:none;}
-  .langtog button{border:0;background:transparent;color:var(--ink-3);font:inherit;
-    font-size:11px;font-weight:700;letter-spacing:.04em;padding:4px 9px;
+  .langtog{display:inline-flex;padding:3px;background:#fff;border:1.5px solid var(--cy);
+    border-radius:999px;flex:none;}
+  .langtog button{border:0;background:transparent;color:var(--ink-3);
+    font-size:12px;font-weight:750;letter-spacing:.03em;padding:5px 12px;
     border-radius:999px;cursor:pointer;}
-  .langtog button[aria-pressed="true"]{background:var(--brand);color:#fff;}
+  .langtog button[aria-pressed="true"]{background:var(--cy-tint);color:var(--cy-2);
+    box-shadow:inset 0 0 0 1.5px var(--cy);}
 
-  .bell{position:relative;width:34px;height:34px;flex:none;display:grid;place-items:center;
-    border:1px solid var(--line);border-radius:50%;background:var(--surface);
-    color:var(--ink-2);cursor:pointer;}
-  .bell::after{content:"";position:absolute;top:6px;right:7px;width:7px;height:7px;
-    border-radius:50%;background:var(--alert);border:1.5px solid var(--surface);}
-
-  /* ============ scroll body ============ */
-  .body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
-    -webkit-overflow-scrolling:touch;
-    padding:16px 18px 26px;display:flex;flex-direction:column;gap:20px;}
-  .body::-webkit-scrollbar{width:0;}
-  .body.flush{padding-left:0;padding-right:0;}
-  .body.dark{background:#08110E;}
-
-  /* ============ primitives ============ */
-  .sec{display:flex;flex-direction:column;gap:10px;}
-  .sechead{display:flex;align-items:baseline;justify-content:space-between;gap:10px;}
-  .sechead h2{margin:0;font-size:13px;font-weight:700;letter-spacing:.02em;}
-  .sechead a,.sechead button.link{font-size:11.5px;color:var(--brand);font-weight:650;
-    text-decoration:none;border:0;background:none;font-family:inherit;cursor:pointer;padding:0;}
-
-  .card{background:var(--surface);border:1px solid var(--line-soft);border-radius:15px;
-    padding:13px 14px;display:flex;flex-direction:column;gap:11px;}
-
-  .btn{border:0;background:var(--brand);color:#fff;font:inherit;font-size:13px;
-    font-weight:650;padding:9px 16px;border-radius:11px;cursor:pointer;
-    display:inline-flex;align-items:center;justify-content:center;gap:7px;}
-  .btn:hover{background:var(--brand-2);}
-  .btn.sm{font-size:12px;padding:7px 13px;border-radius:9px;}
-  .btn.full{width:100%;padding:13px;font-size:14px;border-radius:13px;}
-  .btn.ghost{background:var(--surface);color:var(--brand);border:1px solid var(--brand);}
-  .btn.ghost:hover{background:var(--brand-tint);}
-  .btn.quiet{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line);}
-  .btn.quiet:hover{background:var(--surface);color:var(--ink);}
-  .btn.danger{background:var(--alert);}
-
-  .chips{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px;}
-  .chips::-webkit-scrollbar{height:0;}
-  .chip{flex:none;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);
-    font:inherit;font-size:11.5px;font-weight:600;padding:6px 12px;border-radius:999px;cursor:pointer;}
-  .chip:hover{border-color:var(--brand);color:var(--brand);}
-  .chip[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:#fff;}
-
-  .tag{font-size:9.5px;font-weight:750;letter-spacing:.05em;padding:4px 8px;border-radius:999px;
-    white-space:nowrap;flex:none;}
-  .tag.brand{color:var(--brand);background:var(--brand-tint);}
-  .tag.ok{color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent);}
-  .tag.warn{color:var(--warn);background:color-mix(in srgb,var(--warn) 14%,transparent);}
-  .tag.alert{color:var(--alert);background:color-mix(in srgb,var(--alert) 14%,transparent);}
-  .tag.brass{color:var(--brass);background:var(--brass-tint);}
-
-  .row{display:flex;align-items:center;gap:11px;}
-  .row .grow{flex:1;min-width:0;}
-  .n1{font-size:13.5px;font-weight:650;line-height:1.3;}
-  .n2{font-size:11px;color:var(--ink-3);margin-top:2px;line-height:1.35;}
-  .money{font-variant-numeric:tabular-nums;}
-
-  .ic{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;
-    background:var(--brand-tint);color:var(--brand);}
-  .ic.quiet{background:var(--surface-2);color:var(--ink-2);}
-  .ic.brass{background:var(--brass-tint);color:var(--brass);}
-
-  .avatar{flex:none;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
-    background:var(--brand-2);color:#EAF2EE;font-family:var(--display);font-size:15px;}
-  .avatar.sm{width:34px;height:34px;border-radius:11px;font-size:12.5px;}
-  .avatar.lg{width:64px;height:64px;border-radius:19px;font-size:22px;}
-  .presence{position:relative;}
-  .presence::after{content:"";position:absolute;right:-2px;bottom:-2px;width:11px;height:11px;
-    border-radius:50%;background:var(--ok);border:2.5px solid var(--surface);}
-
-  .divider{height:1px;background:var(--line-soft);}
-
-  .meter{height:5px;border-radius:99px;background:var(--line-soft);overflow:hidden;}
-  .meter i{display:block;height:100%;border-radius:99px;background:var(--brand);}
-  .meter.brass i{background:var(--brass);}
-
-  /* pipeline */
-  .steps{display:flex;align-items:center;}
-  .step{flex:1;display:flex;align-items:center;}
-  .step:last-child{flex:0;}
-  .step .pt{flex:none;width:9px;height:9px;border-radius:50%;background:var(--line);
-    border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line);}
-  .step .ln{flex:1;height:2px;background:var(--line);}
-  .step.done .pt{background:var(--brand);box-shadow:0 0 0 1px var(--brand);}
-  .step.done .ln{background:var(--brand);}
-  .step.now .pt{background:var(--brand);width:11px;height:11px;
-    box-shadow:0 0 0 1px var(--brand),0 0 0 5px var(--brand-tint);}
-  .steplabels{display:flex;justify-content:space-between;font-size:9px;color:var(--ink-3);
-    font-weight:600;margin-top:7px;}
-  .steplabels span.on{color:var(--brand);}
-
-  /* ============ health card object ============ */
-  .hcard{position:relative;border-radius:18px;padding:17px 18px 16px;color:#EAF2EE;
-    background:
-      radial-gradient(120% 140% at 88% 4%, rgba(216,170,88,.20) 0%, rgba(216,170,88,0) 46%),
-      linear-gradient(158deg,#146754 0%,#0C4438 52%,#082D25 100%);
-    box-shadow:var(--shadow-lo);overflow:hidden;isolation:isolate;}
-  .hcard::before{content:"";position:absolute;inset:0;z-index:-1;
-    background:repeating-linear-gradient(112deg,rgba(255,255,255,.045) 0 1px,transparent 1px 9px);}
-  .hcard-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
-  .mark{font-family:var(--display);font-size:15px;letter-spacing:.02em;line-height:1.15;}
-  .mark small{display:block;font-family:var(--ui);font-size:9.5px;letter-spacing:.18em;
-    text-transform:uppercase;color:rgba(234,242,238,.58);margin-top:3px;font-weight:600;}
-  .tier{font-size:10px;font-weight:750;letter-spacing:.16em;padding:4px 10px;border-radius:999px;
-    color:#F2D9A4;border:1px solid rgba(216,170,88,.55);background:rgba(216,170,88,.13);white-space:nowrap;}
-  .hcard-mid{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-top:20px;}
-  .cardno{font-family:var(--display);font-size:19px;letter-spacing:.13em;font-variant-numeric:tabular-nums;}
-  .cardmeta{margin-top:9px;display:flex;gap:20px;}
-  .cardmeta div span{display:block;font-size:9px;letter-spacing:.12em;text-transform:uppercase;
-    color:rgba(234,242,238,.52);font-weight:650;}
-  .cardmeta div strong{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;}
-  .qr{flex:none;width:62px;height:62px;background:#F4F8F5;border-radius:8px;padding:5px;}
-  .qr.big{width:132px;height:132px;border-radius:12px;padding:9px;}
-  .qr svg{display:block;width:100%;height:100%;}
-
-  .renew{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:11px;
-    background:var(--brass-tint);border:1px solid color-mix(in srgb,var(--brass) 32%,transparent);
-    color:var(--brass);font-size:12px;font-weight:600;}
-  .renew .dot{width:6px;height:6px;border-radius:50%;background:currentColor;flex:none;}
-  .renew .sp{margin-left:auto;}
-  .renew button{color:inherit;font:inherit;font-weight:700;background:none;border:0;
-    border-bottom:1px solid currentColor;cursor:pointer;padding:0;white-space:nowrap;}
-
-  .avstack{display:flex;}
-  .av{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:11px;
-    font-weight:700;color:var(--brand);background:var(--brand-tint);
-    border:2px solid var(--surface-2);margin-left:-8px;}
-  .av:first-child{margin-left:0;}
-  .av.add{background:var(--surface);border:1px dashed var(--line);color:var(--ink-3);
-    margin-left:4px;font-size:15px;cursor:pointer;}
-
-  /* ============ quick actions ============ */
-  .quick{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
-  .qa{border:1px solid var(--line-soft);background:var(--surface);border-radius:14px;
-    padding:12px 5px 10px;display:flex;flex-direction:column;align-items:center;gap:7px;
-    cursor:pointer;font:inherit;color:var(--ink);transition:transform .14s ease,border-color .14s ease;}
-  .qa:hover{border-color:var(--brand);transform:translateY(-2px);}
-  .qa .ic{width:34px;height:34px;border-radius:11px;}
-  .qa span{font-size:10.5px;font-weight:600;text-align:center;line-height:1.25;color:var(--ink-2);}
-
-  /* ============ AI strip ============ */
-  .aistrip{display:flex;align-items:center;gap:11px;width:100%;text-align:start;
-    padding:13px 14px;border-radius:15px;background:var(--surface);border:1px solid var(--brand);
-    box-shadow:0 0 0 3px var(--brand-tint);cursor:pointer;font:inherit;color:var(--ink);}
-  .aistrip .spark{flex:none;width:32px;height:32px;border-radius:10px;display:grid;
-    place-items:center;background:var(--brand);color:#fff;}
-  .caret{display:inline-block;width:1.5px;height:13px;background:var(--brand);margin-left:2px;
-    animation:blink 1.1s steps(1) infinite;vertical-align:-2px;}
-  @keyframes blink{50%{opacity:0;}}
-
-  /* ============ chat ============ */
-  .chat{display:flex;flex-direction:column;gap:12px;}
-  .msg{display:flex;gap:8px;max-width:84%;}
-  .msg.me{margin-left:auto;flex-direction:row-reverse;}
-  .msg .bub{padding:10px 13px;border-radius:15px;font-size:13.5px;line-height:1.45;}
-  .msg.ai .bub{background:var(--surface);border:1px solid var(--line-soft);border-bottom-left-radius:5px;}
-  .msg.me .bub{background:var(--brand);color:#fff;border-bottom-right-radius:5px;}
-  .msg .sparkmini{flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
-    background:var(--brand);color:#fff;align-self:flex-end;}
-  .quickreplies{display:flex;flex-wrap:wrap;gap:7px;padding-left:34px;}
-  .qr-btn{border:1px solid var(--brand);background:var(--surface);color:var(--brand);font:inherit;
-    font-size:12px;font-weight:600;padding:7px 13px;border-radius:999px;cursor:pointer;}
-  .qr-btn:hover{background:var(--brand-tint);}
-  .triage{background:var(--surface);border:1px solid var(--brand);border-radius:15px;padding:14px;
-    display:flex;flex-direction:column;gap:12px;box-shadow:0 0 0 3px var(--brand-tint);}
-  .disclaim{display:flex;gap:8px;align-items:flex-start;font-size:10.5px;line-height:1.45;
-    color:var(--ink-3);background:var(--surface-2);border-radius:10px;padding:9px 11px;}
-  .composer{flex:none;display:flex;align-items:center;gap:9px;padding:11px 14px 16px;
-    background:var(--surface);border-top:1px solid var(--line);}
-  .composer .fake{flex:1;min-width:0;border:1px solid var(--line);background:var(--surface-2);
-    border-radius:999px;padding:10px 15px;font-size:13px;color:var(--ink-3);}
-  .composer .mic{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
-    background:var(--brand);color:#fff;border:0;cursor:pointer;}
-
-  /* ============ video call ============ */
-  .stagevid{flex:1;min-height:0;position:relative;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:14px;
-    background:radial-gradient(70% 55% at 50% 34%,#17332B 0%,#0A1714 60%,#08110E 100%);color:#E7EFEB;}
-  .vidname{position:absolute;top:16px;left:16px;display:flex;align-items:center;gap:9px;
-    background:rgba(8,17,14,.62);border:1px solid rgba(231,239,235,.16);border-radius:999px;
-    padding:6px 13px 6px 7px;font-size:12px;font-weight:600;backdrop-filter:blur(8px);}
-  .vidtimer{position:absolute;top:16px;right:16px;background:rgba(8,17,14,.62);
-    border:1px solid rgba(231,239,235,.16);border-radius:999px;padding:6px 12px;font-size:12px;
-    font-weight:700;font-variant-numeric:tabular-nums;backdrop-filter:blur(8px);
-    display:flex;align-items:center;gap:7px;}
-  .vidtimer .rec{width:7px;height:7px;border-radius:50%;background:var(--alert);}
-  .bigav{width:104px;height:104px;border-radius:34px;display:grid;place-items:center;
-    background:linear-gradient(150deg,#1B6B58,#0A3D31);font-family:var(--display);font-size:36px;
-    color:#EAF2EE;box-shadow:0 0 0 10px rgba(79,183,156,.10),0 0 0 22px rgba(79,183,156,.05);}
-  .pip{position:absolute;right:16px;bottom:16px;width:82px;height:112px;border-radius:14px;
-    background:linear-gradient(160deg,#26443A,#12251F);border:1px solid rgba(231,239,235,.18);
-    display:grid;place-items:center;font-size:11px;color:rgba(231,239,235,.65);font-weight:600;}
-  .nettoast{position:absolute;left:16px;right:112px;bottom:20px;display:flex;gap:9px;
-    align-items:flex-start;background:rgba(180,118,26,.16);
-    border:1px solid rgba(214,166,81,.42);color:#EBC77E;border-radius:12px;padding:10px 12px;
-    font-size:11px;line-height:1.4;font-weight:600;backdrop-filter:blur(8px);}
-  .callbar{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;
-    padding:18px 18px 26px;background:#08110E;}
-  .cbtn{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;border:0;
-    background:rgba(231,239,235,.12);color:#E7EFEB;cursor:pointer;}
-  .cbtn:hover{background:rgba(231,239,235,.2);}
-  .cbtn.off{background:rgba(231,239,235,.9);color:#0A1714;}
-  .cbtn.end{background:var(--alert);color:#fff;width:60px;height:60px;}
-
-  /* ============ prescription ============ */
-  .rx{background:var(--surface);border:1px solid var(--line-soft);border-radius:15px;overflow:hidden;}
-  .rx-head{padding:14px;background:var(--brand-2);color:#EAF2EE;display:flex;
-    justify-content:space-between;align-items:flex-start;gap:12px;}
-  .rx-head .n{font-size:14px;font-weight:650;}
-  .rx-head .s{font-size:10.5px;color:rgba(234,242,238,.66);margin-top:2px;}
-  .rx-glyph{font-family:var(--display);font-size:26px;line-height:1;color:#F2D9A4;}
-  .rx-body{padding:14px;display:flex;flex-direction:column;gap:13px;}
-  .med{display:flex;gap:10px;}
-  .med .num{flex:none;width:20px;height:20px;border-radius:6px;background:var(--brand-tint);
-    color:var(--brand);font-size:10.5px;font-weight:750;display:grid;place-items:center;margin-top:1px;}
-  .med .mn{font-size:13px;font-weight:650;}
-  .med .md{font-size:11px;color:var(--ink-3);margin-top:2px;font-variant-numeric:tabular-nums;}
-  .sign{display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px dashed var(--line);}
-  .signglyph{font-family:var(--display);font-style:italic;font-size:19px;color:var(--brand);}
-
-  /* ============ plans ============ */
-  .plan{border:1px solid var(--line-soft);background:var(--surface);border-radius:16px;padding:14px;
-    display:flex;flex-direction:column;gap:11px;}
-  .plan.cur{border-color:var(--brass);box-shadow:0 0 0 3px var(--brass-tint);}
-  .plan-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;}
-  .plan-name{font-family:var(--display);font-size:17px;letter-spacing:.02em;}
-  .plan-price{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
-  .plan-price small{font-size:11px;font-weight:600;color:var(--ink-3);letter-spacing:0;}
-  .feats{display:flex;flex-direction:column;gap:7px;margin:0;padding:0;list-style:none;}
-  .feats li{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--ink-2);}
-  .feats li svg{flex:none;margin-top:2px;color:var(--brand);}
-  .feats li.no{color:var(--ink-3);}
-  .feats li.no svg{color:var(--line);}
-
-  /* ============ misc rows ============ */
-  .listcard{background:var(--surface);border:1px solid var(--line-soft);border-radius:15px;
-    display:flex;flex-direction:column;}
-  .listcard > *{padding:12px 14px;}
-  .listcard > * + *{border-top:1px solid var(--line-soft);}
-  .tapp{cursor:pointer;background:none;border:0;font:inherit;color:inherit;text-align:start;width:100%;}
-  .tapp:hover{background:var(--surface-2);}
-
-  .upload{border:1.5px dashed var(--line);border-radius:15px;background:var(--surface);
-    padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;
-    cursor:pointer;color:var(--ink-2);}
-  .upload:hover{border-color:var(--brand);color:var(--brand);}
-  .upload .t{font-size:13px;font-weight:650;}
-  .upload .s{font-size:11px;color:var(--ink-3);}
-
-  .field{display:flex;flex-direction:column;gap:5px;}
-  .field label{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-    color:var(--ink-3);}
-  .field .val{border:1px solid var(--line);background:var(--surface);border-radius:11px;
-    padding:11px 13px;font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
-  .field .val.ph{color:var(--ink-3);}
-
-  .maplike{height:118px;border-radius:14px;position:relative;overflow:hidden;
-    background:
-      linear-gradient(0deg,rgba(15,93,76,.10),rgba(15,93,76,.10)),
-      repeating-linear-gradient(0deg,var(--line-soft) 0 1px,transparent 1px 26px),
-      repeating-linear-gradient(90deg,var(--line-soft) 0 1px,transparent 1px 26px),
-      var(--surface);
-    border:1px solid var(--line-soft);}
-  .maplike .route{position:absolute;inset:0;}
-  .maplike .pin{position:absolute;width:13px;height:13px;border-radius:50%;background:var(--brand);
-    border:3px solid var(--surface);box-shadow:0 0 0 1px var(--brand);}
-
-  .timeline{display:flex;flex-direction:column;gap:9px;}
-  .tl-date{font-size:10px;font-weight:750;letter-spacing:.08em;text-transform:uppercase;
-    color:var(--ink-3);padding-top:4px;}
-
-  /* ============ tab bar ============ */
-  .tabbar{flex:none;display:grid;grid-template-columns:repeat(5,1fr);background:var(--surface);
-    border-top:1px solid var(--line);padding:8px 6px 16px;z-index:20;}
-  .screen.immersive .tabbar{display:none;}
-  .tab{border:0;background:transparent;font:inherit;display:flex;flex-direction:column;
-    align-items:center;gap:3px;color:var(--ink-3);cursor:pointer;padding:2px 0;}
-  .tab span{font-size:9.5px;font-weight:600;}
-  .tab[aria-current="page"]{color:var(--brand);}
-  .tab[aria-current="page"] span{font-weight:750;}
-
-  .stickyfoot{flex:none;padding:12px 16px 18px;background:var(--surface);
-    border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;}
-
-  :is(button,a):focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:8px;}
-
-  /* ====================================================================
-     On a real phone the fake bezel is just wasted space — drop the frame
-     and let the app fill the screen edge to edge.
-     ==================================================================== */
-  @media (max-width: 640px) {
-    body{
-      display:flex; flex-direction:column; align-items:stretch;
-      padding:0; overflow:hidden; background:var(--surface);
-      height:100vh; height:100dvh;
-    }
-    .tagpill{
-      order:-1; margin:0; width:100%; justify-content:center;
-      border-width:0 0 1px 0; border-radius:0;
-      padding:calc(env(safe-area-inset-top) + 5px) 12px 5px;
-      font-size:.6rem;
-    }
-    .device{
-      display:flex; flex:1; min-height:0;
-      width:100%; max-width:none;
-      padding:0; border-radius:0; background:none; box-shadow:none;
-    }
-    .screen{
-      flex:1; min-height:0; height:auto;
-      border-radius:0; font-size:15.5px;
-    }
-    /* the phone already has a status bar and a notch of its own */
-    .island,.statusbar{display:none;}
-
-    /* keep controls clear of the home indicator */
-    .tabbar{padding-bottom:calc(10px + env(safe-area-inset-bottom));}
-    .composer{padding-bottom:calc(12px + env(safe-area-inset-bottom));}
-    .stickyfoot{padding-bottom:calc(14px + env(safe-area-inset-bottom));}
-    .callbar{padding-bottom:calc(20px + env(safe-area-inset-bottom));}
-
-    /* thumb-sized hit areas */
-    .chip{padding:9px 14px;font-size:12.5px;}
-    .qr-btn{padding:10px 15px;font-size:12.5px;}
-    .langtog button{padding:7px 11px;}
-    .nav .back,.bell{width:38px;height:38px;}
-    .btn{padding:11px 17px;}
-    .btn.sm{padding:9px 14px;}
-    .qa{padding-top:14px;padding-bottom:12px;}
-    .tab{padding:5px 0;}
-    .sechead a,.sechead button.link{padding:4px 0;}
+  .loginbtn{
+    display:inline-flex;align-items:center;gap:7px;border:0;cursor:pointer;
+    background:var(--cy);color:#fff;font-size:13.5px;font-weight:700;
+    padding:9px 15px;border-radius:999px;box-shadow:0 4px 12px rgba(15,173,212,.35);
   }
 
-  /* landscape phones: the banner would eat most of the height */
-  @media (max-width: 900px) and (max-height: 520px) {
+  .search{
+    display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+    border-radius:var(--r);padding:12px 14px;color:var(--ink-3);font-size:14px;
+    box-shadow:var(--sh-lo);
+  }
+  .search svg{flex:none;color:var(--ink-3);}
+
+  /* ================= scroll body ================= */
+  .body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;padding:16px 16px 22px;
+    display:flex;flex-direction:column;gap:22px;}
+  .body::-webkit-scrollbar{width:0;}
+  /* the body is a column flexbox — stop children from being squeezed */
+  .body > *{flex:none;}
+  .body.flush{padding-left:0;padding-right:0;}
+
+  /* horizontal rails bleed to the screen edge */
+  /* scroll-padding keeps snap-align:start from eating the leading gutter */
+  .rail{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x proximity;
+    padding:2px 16px;margin:0 -16px;scroll-padding-left:16px;}
+  .rail::-webkit-scrollbar{height:0;}
+  .rail > *{scroll-snap-align:start;flex:none;}
+
+  .sechead{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px;}
+  .sechead h2{margin:0;font-size:20px;font-weight:700;letter-spacing:-.015em;}
+  .sechead .link{border:0;background:none;color:var(--cy);font-size:14.5px;font-weight:650;cursor:pointer;padding:2px 0;}
+  section.blk{margin:0;}
+
+  /* ================= service tiles (2x2) ================= */
+  .svcgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .svc{
+    position:relative;display:block;text-align:left;border:0;cursor:pointer;
+    border-radius:var(--r);padding:14px 40px 12px 12px;min-height:112px;overflow:hidden;
+    background:linear-gradient(135deg,#EFF4FD 0%,#F6EFFA 100%);
+    box-shadow:var(--sh-lo);
+  }
+  .svc.b{background:linear-gradient(135deg,#E8F6FC 0%,#EFF4FD 100%);}
+  .svc.c{background:linear-gradient(135deg,#FBEFF7 0%,#EEF2FC 100%);}
+  /* keep every label above the artwork that bleeds in from the right */
+  .svc .t1,.svc .t2,.svc .price,.svc .flash{position:relative;z-index:1;}
+  .svc .t1{font-size:13.5px;color:var(--ink-2);font-weight:500;}
+  .svc .t2{font-size:15.5px;font-weight:750;letter-spacing:-.015em;margin-top:1px;}
+  /* price and the flash link must never wrap under the artwork */
+  .svc .price{margin-top:6px;font-size:14px;font-weight:750;color:var(--cy-2);white-space:nowrap;}
+  .svc .price s{color:var(--ink-3);font-weight:500;font-size:11.5px;margin-left:5px;}
+  .svc .flash{display:inline-flex;align-items:center;gap:3px;margin-top:6px;white-space:nowrap;
+    font-size:11.5px;font-weight:700;color:var(--mg);border-bottom:1px solid var(--mg);}
+  /* the photo bleeds off the right edge and dissolves into the tile, which
+     stands in for the cut-out product//portrait art of the reference design */
+  .svc .art{position:absolute;right:0;top:0;bottom:0;width:47%;pointer-events:none;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 58%);
+    mask-image:linear-gradient(90deg,transparent 0,#000 58%);}
+  .newtag{position:absolute;top:0;right:0;z-index:2;background:var(--mg);color:#fff;
+    font-size:11px;font-weight:700;padding:4px 10px;border-bottom-left-radius:10px;}
+
+  /* ================= other services rail ================= */
+  .other{width:118px;border:0;background:none;padding:0;cursor:pointer;text-align:center;}
+  .other .thumb{position:relative;display:block;height:96px;border-radius:var(--r-sm);
+    overflow:hidden;background:var(--cy-tint);}
+  .other .badge{position:absolute;top:0;left:0;z-index:2;background:#1E7A3E;color:#fff;
+    font-size:10.5px;font-weight:700;padding:3px 8px;border-bottom-right-radius:8px;}
+  .other .lbl{margin-top:8px;font-size:13.5px;font-weight:600;line-height:1.25;}
+
+  /* ================= banner carousel ================= */
+  .carousel{position:relative;}
+  /* 64px gutters centre a 262px slide inside the 390px frame, so the
+     neighbours peek symmetrically the way the reference carousel does */
+  .ctrack{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+    padding:0 64px;margin:0 -16px;scroll-behavior:smooth;}
+  .ctrack::-webkit-scrollbar{height:0;}
+  .slide{position:relative;flex:none;width:262px;height:132px;border-radius:var(--r);
+    overflow:hidden;scroll-snap-align:center;box-shadow:var(--sh-lo);}
+  .slide .cap{position:absolute;inset:0;padding:15px 17px;color:#fff;
+    display:flex;flex-direction:column;justify-content:center;}
+  .slide .cap::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(10,24,30,.86) 0%,rgba(10,24,30,.55) 55%,rgba(10,24,30,.12) 100%);}
+  .slide .cap > *{position:relative;}
+  .slide .k{font-size:10.5px;font-weight:750;letter-spacing:.09em;text-transform:uppercase;opacity:.88;}
+  .slide .h{font-size:20px;font-weight:800;letter-spacing:-.02em;line-height:1.14;margin-top:3px;}
+  .slide .s{font-size:12px;margin-top:4px;opacity:.9;}
+  .slide .cta{align-self:flex-start;margin-top:9px;background:#fff;color:var(--ink);
+    font-size:10.5px;font-weight:750;padding:5px 12px;border-radius:999px;}
+  .dots{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);
+    display:flex;gap:6px;background:rgba(255,255,255,.82);backdrop-filter:blur(4px);
+    padding:5px 9px;border-radius:999px;}
+  .dots i{width:6px;height:6px;border-radius:50%;background:#C7D0D4;transition:background .2s;}
+  .dots i.on{background:var(--cy);}
+
+  /* ================= concern cards ================= */
+  /* a fixed-height button centres its content vertically by default —
+     force the heading back to the top so the artwork stays clear of it */
+  .concern{width:250px;height:230px;border-radius:var(--r);padding:16px 16px 0;
+    position:relative;overflow:hidden;border:0;text-align:left;cursor:pointer;
+    display:flex;flex-direction:column;align-items:stretch;}
+  .concern.blue{background:#E3F3FB;}
+  .concern.pink{background:#FBE9EC;}
+  .concern.mint{background:#E4F5EE;}
+  .concern h3{margin:0;font-size:19px;font-weight:650;letter-spacing:-.01em;line-height:1.22;}
+  /* photo sits under the heading and fades upward so the title stays legible */
+  .concern .art{position:absolute;left:0;right:0;bottom:0;height:66%;
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%);
+    mask-image:linear-gradient(180deg,transparent 0,#000 26%);}
+
+  /* ================= chips ================= */
+  .chips{display:flex;gap:10px;overflow-x:auto;padding:2px 16px 4px;margin:0 -16px;}
+  .chips::-webkit-scrollbar{height:0;}
+  .chip{flex:none;display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+    border:1px solid var(--line-2);background:#fff;border-radius:var(--r-sm);
+    padding:11px 15px;font-size:14.5px;font-weight:600;color:var(--ink);}
+  .chip svg{color:var(--cy);}
+  .chip[aria-pressed="true"]{background:var(--cy-tint);border-color:var(--cy-3);color:var(--cy-2);}
+
+  /* ================= doctor card ================= */
+  .doc{width:212px;border:1px solid var(--line);border-radius:var(--r);background:#fff;
+    padding:18px 14px 14px;text-align:center;box-shadow:var(--sh-lo);}
+  /* a bare span stays inline and ignores the box, so blockify it */
+  .doc .pic{display:block;width:92px;height:92px;border-radius:50%;
+    overflow:hidden;margin:0 auto;background:var(--cy-tint);}
+  .doc .pic svg{width:100%;height:100%;display:block;}
+  .doc .nm{margin-top:12px;font-size:15.5px;font-weight:700;letter-spacing:-.01em;}
+  .doc .sp{margin-top:8px;font-size:13.5px;color:var(--ink-3);}
+  .doc .fee{margin-top:12px;font-size:16px;font-weight:700;}
+  .doc .bk{margin-top:10px;width:100%;border:0;background:none;cursor:pointer;
+    color:var(--cy);font-size:14.5px;font-weight:700;padding:6px 0;}
+
+  /* ================= product card ================= */
+  .prod{width:186px;border:1px solid var(--line);border-radius:var(--r);background:#fff;
+    overflow:hidden;box-shadow:var(--sh-lo);display:flex;flex-direction:column;}
+  .prod .top{position:relative;height:152px;background:#fff;overflow:hidden;}
+  .prod .off{position:absolute;top:0;right:0;z-index:2;background:var(--ok-tint);color:var(--ok);
+    font-size:12.5px;font-weight:750;line-height:1.15;text-align:center;
+    padding:8px 10px 12px;border-bottom-left-radius:10px;
+    clip-path:polygon(0 0,100% 0,100% 100%,88% 88%,75% 100%,62% 88%,50% 100%,38% 88%,25% 100%,12% 88%,0 100%);}
+  .prod .info{padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;flex:1;}
+  .prod .nm{font-size:14.5px;font-weight:650;line-height:1.3;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+  .prod .pr{font-size:15.5px;font-weight:750;}
+  .prod .pr s{color:var(--ink-3);font-weight:500;font-size:13px;margin-left:6px;}
+  .prod .atc{margin-top:auto;border:1px solid var(--cy-3);background:#fff;color:var(--cy);
+    border-radius:var(--r-sm);padding:9px 0;font-size:14px;font-weight:700;cursor:pointer;}
+
+  /* ================= tab bar ================= */
+  .tabbar{
+    flex:none;position:relative;display:grid;grid-template-columns:repeat(5,1fr);
+    background:#fff;border-top:1px solid var(--line);
+    padding:9px 0 calc(9px + env(safe-area-inset-bottom));z-index:40;
+  }
+  .tab{position:relative;border:0;background:none;cursor:pointer;padding:3px 0;
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+    font-size:12.5px;font-weight:600;color:var(--ink-3);}
+  .tab[aria-current="page"]{color:var(--cy);}
+  .tab[aria-current="page"]::before{
+    content:"";position:absolute;top:-10px;left:50%;transform:translateX(-50%);
+    width:66px;height:4px;border-radius:0 0 3px 3px;background:var(--cy);}
+  .tab .fab{
+    position:absolute;top:-30px;left:50%;transform:translateX(-50%);
+    width:66px;height:66px;border-radius:50%;background:var(--cy);color:#fff;
+    display:grid;place-items:center;box-shadow:0 8px 20px rgba(15,173,212,.42);
+    border:5px solid #fff;
+  }
+  .tab.center{padding-top:32px;}
+
+  /* ================= bottom sheet ================= */
+  .scrim{position:absolute;inset:0;background:rgba(10,20,24,.42);
+    opacity:0;pointer-events:none;transition:opacity .22s ease;z-index:50;}
+  .sheet{
+    position:absolute;left:0;right:0;bottom:0;background:#fff;
+    border-radius:var(--r-xl) var(--r-xl) 0 0;
+    padding:22px 18px calc(30px + env(safe-area-inset-bottom));
+    transform:translateY(102%);transition:transform .28s cubic-bezier(.22,1,.36,1);z-index:55;
+    box-shadow:0 -14px 40px rgba(16,32,38,.18);
+  }
+  .sheet h2{margin:0 0 16px;font-size:19px;font-weight:700;color:var(--cy);letter-spacing:-.01em;}
+  .screen.sheeton .scrim{opacity:1;pointer-events:auto;}
+  .screen.sheeton .sheet{transform:translateY(0);}
+
+  /* ================= store header ================= */
+  .storehead{flex:none;padding:6px 16px 14px;background:#fff;border-bottom:1px solid var(--line);}
+  .storehead .addr{display:flex;align-items:flex-start;gap:10px;padding:6px 0 12px;}
+  .storehead .addr .txt{flex:1;min-width:0;}
+  .storehead .a1{display:flex;align-items:center;gap:6px;font-size:17px;font-weight:700;letter-spacing:-.01em;}
+  .storehead .a2{margin-top:2px;font-size:14px;color:var(--ink-2);}
+  .storehead .a2 b{color:var(--ink);font-weight:650;}
+  .cart{width:52px;height:44px;flex:none;display:grid;place-items:center;
+    border:1px solid var(--line-2);border-radius:var(--r-sm);background:#fff;color:var(--cy);cursor:pointer;position:relative;}
+  .cart .cnt{position:absolute;top:-6px;right:-6px;min-width:19px;height:19px;padding:0 5px;
+    border-radius:999px;background:var(--mg);color:#fff;font-size:11px;font-weight:700;
+    display:grid;place-items:center;}
+
+  .tiles3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .tile{border:1px solid var(--line);border-radius:var(--r-sm);background:#fff;
+    padding:12px 6px 11px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:8px;
+    font-size:13.5px;font-weight:600;line-height:1.25;text-align:center;}
+  .tile svg{width:44px;height:44px;}
+
+  .promo{position:relative;width:150px;height:184px;border-radius:var(--r);
+    overflow:hidden;box-shadow:var(--sh-lo);}
+  .promo .cap{position:absolute;inset:0;padding:12px;color:#fff;
+    display:flex;flex-direction:column;justify-content:flex-end;}
+  .promo .cap::before{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(10,22,28,.05) 28%,rgba(10,22,28,.86) 100%);}
+  .promo .cap > *{position:relative;}
+  .promo .h{font-size:15px;font-weight:800;line-height:1.14;letter-spacing:-.01em;}
+  .promo .s{font-size:11.5px;margin-top:3px;opacity:.9;}
+
+  .cats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px 8px;}
+  .cat{border:0;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;
+    font-size:12px;font-weight:600;color:var(--ink-2);line-height:1.2;text-align:center;}
+  .cat .cic{width:56px;height:56px;border-radius:50%;background:var(--cy-tint);display:grid;place-items:center;}
+  .cat .cic svg{width:28px;height:28px;color:var(--cy-2);}
+
+  /* ================= account list ================= */
+  .grouplbl{font-size:15px;color:var(--ink-3);font-weight:500;margin:0 0 8px 4px;}
+  .group{background:var(--cy-soft);border-radius:var(--r);overflow:hidden;border:1px solid #E8F3F7;}
+  .arow{width:100%;display:flex;align-items:center;gap:14px;padding:15px 14px;
+    border:0;background:none;cursor:pointer;text-align:left;
+    border-bottom:1px solid #E4F0F5;}
+  .group .arow:last-child{border-bottom:0;}
+  .arow .aic{width:44px;height:44px;flex:none;border-radius:50%;background:#DCEFF6;
+    display:grid;place-items:center;color:var(--cy-2);}
+  .arow .alb{flex:1;min-width:0;font-size:16.5px;font-weight:500;letter-spacing:-.01em;}
+  .arow .chev{color:var(--ink-3);flex:none;}
+
+  .profile{display:flex;align-items:center;gap:14px;padding:2px 2px 4px;}
+  .profile .pav{width:58px;height:58px;border-radius:50%;overflow:hidden;
+    background:var(--cy-tint);flex:none;}
+  .profile .pn{font-size:18px;font-weight:700;letter-spacing:-.01em;}
+  .profile .pp{font-size:13.5px;color:var(--ink-3);margin-top:2px;}
+
+  /* ================= splash ================= */
+  .splash{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:0;background:#fff;position:relative;}
+  .splash .brandof{position:absolute;bottom:52px;left:0;right:0;text-align:center;}
+  .splash .brandof span{font-size:14px;color:var(--ink-2);}
+  .splash .brandof .parent{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px;}
+  .splash .brandof .parent b{font-size:15px;font-weight:700;line-height:1.15;text-align:left;color:#2A3A44;}
+
+  /* ================= onboarding ================= */
+  .onb{flex:1;position:relative;display:flex;flex-direction:column;overflow:hidden;background:#DCE7EC;}
+  .onb .hero{position:absolute;inset:0;}
+  .onb .hero img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;}
+  .onb .veil{position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 34%,rgba(24,32,36,.55) 54%,rgba(20,26,30,.94) 74%,#15191C 100%);}
+  .onb .top{position:relative;padding:26px 0 0;text-align:center;}
+  .onb .foot{position:relative;margin-top:auto;padding:0 18px 26px;color:#fff;}
+  .onb h1{margin:0 0 22px;font-size:29px;line-height:1.24;font-weight:600;letter-spacing:-.02em;text-align:center;}
+  .btn-primary{width:100%;border:0;cursor:pointer;background:var(--cy);color:#fff;
+    padding:16px 0;border-radius:var(--r-sm);font-size:17px;font-weight:650;}
+  .btn-ghost{flex:1;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.06);
+    color:#fff;padding:14px 0;border-radius:var(--r-sm);font-size:16px;font-weight:500;cursor:pointer;}
+  .onb .pair{display:flex;gap:12px;margin-top:12px;}
+
+  /* ================= login ================= */
+  .login{flex:1;overflow-y:auto;padding:14px 16px 30px;
+    background:linear-gradient(120deg,#DCF1F7 0%,#F2F0F8 46%,#F7E7F1 100%);
+    display:flex;flex-direction:column;}
+  .login::-webkit-scrollbar{width:0;}
+  .login .lt{display:flex;justify-content:flex-end;}
+  .login .mark{text-align:center;padding:26px 0 24px;}
+  .card{background:#fff;border-radius:var(--r-lg);padding:24px 20px;box-shadow:var(--sh-md);}
+  .card h1{margin:0;font-size:26px;font-weight:700;color:var(--cy);letter-spacing:-.02em;}
+  .card .sub{margin:6px 0 20px;font-size:14.5px;color:var(--ink-3);}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:14.5px;color:var(--ink-2);margin-bottom:7px;}
+  .inp{display:flex;align-items:center;gap:10px;border:1px solid var(--line-2);
+    border-radius:var(--r-sm);padding:13px 14px;background:#fff;color:var(--ink-3);font-size:15px;}
+  .inp .flag{width:20px;height:20px;border-radius:50%;flex:none;}
+  .inp .grow{flex:1;min-width:0;}
+  .inp .eye{border:0;background:none;color:var(--ink-3);cursor:pointer;padding:0;display:grid;place-items:center;}
+  .forgot{display:block;margin:-4px 0 16px auto;border:0;background:none;
+    color:var(--cy);font-size:14.5px;font-weight:700;cursor:pointer;}
+  .altline{display:flex;align-items:center;gap:12px;margin:18px 0;color:var(--ink-3);font-size:14px;}
+  .altline::before,.altline::after{content:"";flex:1;height:1px;background:var(--line-2);}
+  .oauth{width:100%;display:flex;align-items:center;justify-content:center;gap:12px;
+    border:1px solid var(--line-2);background:#fff;border-radius:var(--r-sm);
+    padding:14px 0;font-size:16px;font-weight:650;cursor:pointer;}
+  .regline{text-align:center;margin-top:18px;font-size:14.5px;color:var(--ink-2);}
+  .regline button{border:0;background:none;color:var(--cy);font-weight:750;cursor:pointer;font-size:14.5px;}
+
+  /* ================= simple nav (sub screens) ================= */
+  .nav{flex:none;display:flex;align-items:center;gap:12px;padding:8px 14px 12px;
+    background:#fff;border-bottom:1px solid var(--line);}
+  .nav .back{width:34px;height:34px;flex:none;display:grid;place-items:center;
+    border:1px solid var(--line-2);border-radius:50%;background:#fff;color:var(--ink-2);cursor:pointer;}
+  .nav h1{margin:0;font-size:16px;font-weight:700;flex:1;min-width:0;letter-spacing:-.01em;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+
+  .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:14px;padding:30px;text-align:center;color:var(--ink-3);}
+  .empty svg{width:110px;height:110px;opacity:.9;}
+  .empty b{font-size:17px;color:var(--ink);font-weight:650;}
+  .empty p{margin:0;font-size:14px;max-width:250px;line-height:1.5;}
+
+  .orderrow{display:flex;gap:12px;align-items:center;border:1px solid var(--line);
+    border-radius:var(--r);padding:13px;background:#fff;box-shadow:var(--sh-lo);}
+  .orderrow .oic{width:46px;height:46px;border-radius:var(--r-sm);background:var(--cy-tint);
+    display:grid;place-items:center;color:var(--cy-2);flex:none;}
+  .orderrow .ot{flex:1;min-width:0;}
+  .orderrow .o1{font-size:15px;font-weight:650;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .orderrow .o2{font-size:12.5px;color:var(--ink-3);margin-top:2px;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .orderrow .oic{font-size:13px;font-weight:750;}
+  .pill{font-size:11.5px;font-weight:700;padding:4px 9px;border-radius:999px;flex:none;}
+  .pill.ok{background:var(--ok-tint);color:var(--ok);}
+  .pill.pend{background:#FDF2E0;color:var(--warn);}
+
+  @media (max-width:430px){
+    body{padding:0;background:var(--page);}
+    .device{width:100%;border-radius:0;padding:0;box-shadow:none;background:transparent;}
+    .screen{height:100dvh;border-radius:0;}
+    .island{display:none;}
     .tagpill{display:none;}
   }
-
-  @media (prefers-reduced-motion: reduce){
-    *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
-      transition-duration:.001ms!important;}
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important;}
+    .ctrack{scroll-behavior:auto;}
   }
 </style>
 
-<span class="tagpill" data-bn="কনসেপ্ট প্রিভিউ" data-en="Concept preview">কনসেপ্ট প্রিভিউ</span>
+<span class="tagpill">Concept preview · CareLife</span>
+
+<!-- ===================== shared SVG sprite ===================== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gBrand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A22A8F"/><stop offset="50%" stop-color="#6E3B9E"/><stop offset="100%" stop-color="#0FADD4"/>
+    </linearGradient>
+    <linearGradient id="gCy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#57C9E4"/><stop offset="100%" stop-color="#0894BA"/>
+    </linearGradient>
+    <linearGradient id="gMg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C43FA8"/><stop offset="100%" stop-color="#7E1F73"/>
+    </linearGradient>
+
+    <!-- ---- brand wordmark ---- -->
+    <symbol id="wordmark" viewBox="0 0 260 74">
+      <text x="6" y="46" font-family="Georgia,'Iowan Old Style',serif" font-size="46"
+            font-weight="700" letter-spacing="-1.5" fill="url(#gBrand)">CareLife</text>
+      <path d="M46 52c14 20 148 20 168-6" stroke="url(#gBrand)" stroke-width="7"
+            stroke-linecap="round" fill="none"/>
+      <circle cx="216" cy="43" r="5" fill="#0FADD4"/>
+    </symbol>
+
+    <!-- ---- generic person / doctor portraits ---- -->
+
+    <!-- ---- service tile art ---- -->
+
+    <!-- ---- other-services art ---- -->
+
+    <!-- ---- concern art ---- -->
+
+    <!-- ---- banners ---- -->
+
+    <!-- ---- product art ---- -->
+
+    <!-- ---- store tiles ---- -->
+    <symbol id="tRx" viewBox="0 0 48 48">
+      <rect x="9" y="5" width="30" height="38" rx="4" fill="#EAF3F8" stroke="#0894BA" stroke-width="2"/>
+      <text x="16" y="24" font-family="Georgia,serif" font-size="15" font-weight="700" fill="#A22A8F">R</text>
+      <path d="M20 20l6 8" stroke="#A22A8F" stroke-width="2.4" stroke-linecap="round"/>
+      <rect x="24" y="10" width="12" height="4" rx="2" fill="#0FADD4"/>
+      <rect x="15" y="32" width="18" height="3" rx="1.5" fill="#B7CDD8"/>
+      <circle cx="34" cy="26" r="5" fill="#F5A93C"/>
+      <path d="M31 4l4 8" stroke="#5A6A72" stroke-width="2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="tChat" viewBox="0 0 48 48">
+      <circle cx="24" cy="23" r="19" fill="#0A7CFF"/>
+      <path d="M13 27l9-10 5 5 8-6-9 10-5-5Z" fill="#fff"/>
+    </symbol>
+    <symbol id="tGrid" viewBox="0 0 48 48">
+      <rect x="7" y="12" width="34" height="30" rx="3" fill="#EAF3F8" stroke="#0894BA" stroke-width="2"/>
+      <path d="M7 12l4-6h26l4 6" fill="#CFE6F0" stroke="#0894BA" stroke-width="2" stroke-linejoin="round"/>
+      <rect x="12" y="20" width="7" height="7" rx="1.5" fill="#F5A93C"/>
+      <rect x="22" y="20" width="7" height="7" rx="1.5" fill="#5EC2DA"/>
+      <rect x="32" y="20" width="4" height="7" rx="1.5" fill="#D97BB2"/>
+      <rect x="12" y="31" width="7" height="7" rx="1.5" fill="#8CD5B4"/>
+      <rect x="22" y="31" width="14" height="7" rx="1.5" fill="#C9D4D8"/>
+    </symbol>
+
+    <!-- ---- onboarding hero ---- -->
+
+    <symbol id="emptyBox" viewBox="0 0 120 120">
+      <rect x="18" y="42" width="84" height="60" rx="7" fill="#EDF3F6" stroke="#C6D5DC" stroke-width="3"/>
+      <path d="M18 42l10-18h64l10 18" fill="#DCE9EF" stroke="#C6D5DC" stroke-width="3" stroke-linejoin="round"/>
+      <path d="M50 42h20v14H50z" fill="#C6D5DC"/>
+    </symbol>
+  </defs>
+</svg>
 
 <div class="device">
-  <div class="screen" id="screen">
+  <div class="screen onlight" id="screen">
     <div class="island"></div>
 
     <div class="statusbar">
-      <span>৯:৫৫</span>
+      <span>10:53</span>
       <span class="sig">
         <span class="sbar" style="height:5px"></span>
         <span class="sbar" style="height:7px"></span>
@@ -491,1194 +512,761 @@
 
     <div class="stack">
 
-      <!-- ==================== HOME ==================== -->
-      <section class="view on" id="v-home">
-        <header class="appbar">
-          <div class="hello">
-            <div class="eyebrow" data-bn="শুভ সন্ধ্যা" data-en="Good evening">শুভ সন্ধ্যা</div>
-            <div class="who" data-bn="রুমানা আক্তার" data-en="Rumana Akter">রুমানা আক্তার</div>
-          </div>
-          <div class="tools">
-            <div class="langtog" role="group" aria-label="Language">
-              <button type="button" data-lang="bn" aria-pressed="true">বাং</button>
-              <button type="button" data-lang="en" aria-pressed="false">EN</button>
-            </div>
-            <button class="bell" type="button" aria-label="Notifications">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>
+      <!-- ==================== 1. SPLASH ==================== -->
+      <section class="view on" id="v-splash">
+        <div class="splash" data-go="onboard">
+          <span class="logo"><svg width="230" viewBox="0 0 260 74"><use href="#wordmark"/></svg></span>
+          <div class="brandof">
+            <span>A Brand of</span>
+            <div class="parent">
+              <svg width="34" height="34" viewBox="0 0 40 40" aria-hidden="true">
+                <path d="M19 19 8 12c-5 3-5 11 0 14s11-1 11-7Z" fill="#3FBCD4"/>
+                <path d="M21 19 32 12c5 3 5 11 0 14s-11-1-11-7Z" fill="#3F63B8"/>
+                <path d="M19 21 12 32c3 5 11 5 14 0s-1-11-7-11Z" fill="#2F4A96"/>
+                <path d="M21 17 28 6c-3-5-11-5-14 0s1 11 7 11Z" fill="#5BD0C4"/>
               </svg>
-            </button>
-          </div>
-        </header>
-
-        <div class="body">
-          <div style="display:flex;flex-direction:column;gap:9px">
-            <button class="hcard tapp" data-go="card" style="padding:17px 18px 16px">
-              <div class="hcard-top">
-                <div class="mark"><span data-bn="কেয়ারফুল লাইফ" data-en="Careful Life">কেয়ারফুল লাইফ</span>
-                  <small data-bn="হেলথ কার্ড" data-en="Health Card">হেলথ কার্ড</small></div>
-                <span class="tier">GOLD</span>
-              </div>
-              <div class="hcard-mid">
-                <div>
-                  <div class="cardno">CL 4471 8820</div>
-                  <div class="cardmeta">
-                    <div><span data-bn="সদস্য" data-en="Member">সদস্য</span>
-                      <strong data-bn="রুমানা আক্তার" data-en="Rumana Akter">রুমানা আক্তার</strong></div>
-                    <div><span data-bn="মেয়াদ" data-en="Valid till">মেয়াদ</span>
-                      <strong data-bn="১২ মার্চ ২০২৭" data-en="12 Mar 2027">১২ মার্চ ২০২৭</strong></div>
-                  </div>
-                </div>
-                <div class="qr" data-qr aria-hidden="true"></div>
-              </div>
-            </button>
-
-            <div class="renew">
-              <span class="dot"></span>
-              <span data-bn="৪২ দিন পর নবায়ন হবে" data-en="Auto-renews in 42 days">৪২ দিন পর নবায়ন হবে</span>
-              <span class="sp"></span>
-              <button type="button" data-go="plans" data-bn="বদলান" data-en="Manage">বদলান</button>
+              <b>CareLife<br>Health Services</b>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="row" style="gap:8px;padding-top:2px">
-              <div class="avstack">
-                <div class="av">রু</div><div class="av">সা</div><div class="av">না</div>
-                <button class="av add" type="button" aria-label="Add">+</button>
-              </div>
-              <p style="margin:0;font-size:12px;color:var(--ink-2)"
-                 data-bn="পরিবারের ৩ জন · আরও ২ জন" data-en="3 members · 2 slots left">পরিবারের ৩ জন · আরও ২ জন</p>
+      <!-- ==================== 2. ONBOARDING ==================== -->
+      <section class="view" id="v-onboard">
+        <div class="onb">
+          <div class="hero"><img class="ph" src="assets/hero-doctor.jpg" alt="Doctor on a video consultation" loading="lazy"></div>
+          <div class="veil"></div>
+          <div class="top">
+            <span class="logo"><svg width="205" viewBox="0 0 260 74"><use href="#wordmark"/></svg></span>
+          </div>
+          <div class="foot">
+            <h1>All Your Healthcare<br>Needs in One Place</h1>
+            <button class="btn-primary" data-go="home">Get Started</button>
+            <div class="pair">
+              <button class="btn-ghost" data-go="login">Login</button>
+              <button class="btn-ghost" data-go="login">Register</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 3. LOGIN ==================== -->
+      <section class="view" id="v-login">
+        <div class="login">
+          <div class="lt">
+            <div class="langtog" role="group" aria-label="Language">
+              <button type="button" data-lang="en" aria-pressed="true">EN</button>
+              <button type="button" data-lang="bn" aria-pressed="false">BN</button>
             </div>
           </div>
 
-          <div class="quick">
-            <button class="qa" type="button" data-go="doctors">
-              <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="13" height="12" rx="2.5"/><path d="m15 11 6-3.5v9L15 13"/></svg></span>
-              <span data-bn="ডাক্তার দেখান" data-en="See a doctor">ডাক্তার দেখান</span>
-            </button>
-            <button class="qa" type="button" data-go="hometest">
-              <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v9.5L6.4 19a2.6 2.6 0 0 0 2.2 4h6.8a2.6 2.6 0 0 0 2.2-4L14 12.5V3"/><path d="M7.6 15h8.8"/></svg></span>
-              <span data-bn="বাসায় টেস্ট" data-en="Home test">বাসায় টেস্ট</span>
-            </button>
-            <button class="qa" type="button" data-go="pharmacy">
-              <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.2" y="8.5" width="19.6" height="11" rx="5.5" transform="rotate(-45 12 14)"/><path d="m8.4 8.4 7.2 7.2"/></svg></span>
-              <span data-bn="ওষুধ অর্ডার" data-en="Order medicine">ওষুধ অর্ডার</span>
-            </button>
-            <button class="qa" type="button" data-go="claim">
-              <span class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h14v17l-2.3-1.6-2.4 1.6-2.3-1.6-2.4 1.6L7.3 19 5 20.5Z"/><path d="M9 8h6M9 12h6"/></svg></span>
-              <span data-bn="ক্যাশব্যাক ক্লেইম" data-en="Cash-back claim">ক্যাশব্যাক ক্লেইম</span>
-            </button>
+          <div class="mark">
+            <span class="logo"><svg width="215" viewBox="0 0 260 74"><use href="#wordmark"/></svg></span>
           </div>
 
-          <button class="aistrip" type="button" data-go="ai">
-            <span class="spark"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5 13.7 8 19 9.8 13.7 11.6 12 17l-1.7-5.4L5 9.8 10.3 8Z"/><path d="M18.5 14.5l.8 2.4 2.2.8-2.2.8-.8 2.4-.8-2.4-2.2-.8 2.2-.8Z"/></svg></span>
-            <span style="flex:1;min-width:0">
-              <span style="font-size:13.5px;font-weight:600;display:block">
-                <span data-bn="কী সমস্যা হচ্ছে? বাংলায় লিখুন" data-en="What's bothering you? Just type it">কী সমস্যা হচ্ছে? বাংলায় লিখুন</span><i class="caret"></i>
-              </span>
-              <span style="font-size:11px;color:var(--ink-3);display:block;margin-top:2px"
-                    data-bn="উপসর্গ বলুন — ডাক্তার বেছে বুকিং করে দেবে" data-en="Describe symptoms — it picks a doctor and books">উপসর্গ বলুন — ডাক্তার বেছে বুকিং করে দেবে</span>
-            </span>
-            <span class="tag brand" data-bn="২৪/৭" data-en="24/7">২৪/৭</span>
-          </button>
+          <div class="card">
+            <h1 data-en="Log-in" data-bn="লগ-ইন">Log-in</h1>
+            <p class="sub" data-en="Create an account or log in to explore our app"
+               data-bn="অ্যাকাউন্ট খুলুন বা লগ ইন করে অ্যাপটি দেখুন">Create an account or log in to explore our app</p>
 
-          <section class="sec">
-            <div class="sechead">
-              <h2 data-bn="আজকের অ্যাপয়েন্টমেন্ট" data-en="Today's appointment">আজকের অ্যাপয়েন্টমেন্ট</h2>
-              <button class="link" type="button" data-go="doctors" data-bn="সব দেখুন" data-en="See all">সব দেখুন</button>
-            </div>
-            <div class="card">
-              <div class="row">
-                <div class="avatar">তহ</div>
-                <div class="grow">
-                  <div class="n1" data-bn="ডা. তানভীর হাসান" data-en="Dr. Tanvir Hasan">ডা. তানভীর হাসান</div>
-                  <div class="n2" data-bn="মেডিসিন · ১২ বছরের অভিজ্ঞতা" data-en="Internal Medicine · 12 yrs">মেডিসিন · ১২ বছরের অভিজ্ঞতা</div>
-                </div>
-                <span class="tag warn" data-bn="৩৫ মিনিট পর" data-en="in 35 min">৩৫ মিনিট পর</span>
+            <div class="field">
+              <label data-en="Phone Number" data-bn="মোবাইল নম্বর">Phone Number</label>
+              <div class="inp">
+                <svg class="flag" viewBox="0 0 20 20" aria-hidden="true">
+                  <circle cx="10" cy="10" r="10" fill="#006A4E"/><circle cx="8.6" cy="10" r="5.4" fill="#F42A41"/>
+                </svg>
+                <span>(+880)</span>
+                <span class="grow" style="letter-spacing:.06em">1XXXXXXXX</span>
               </div>
-              <div class="divider"></div>
-              <div class="row">
-                <span style="font-size:11.5px;color:var(--ink-2);display:flex;align-items:center;gap:6px">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
-                  <span data-bn="আজ রাত ৯:৩০ · ভিডিও কল" data-en="Today 9:30 PM · Video call">আজ রাত ৯:৩০ · ভিডিও কল</span>
-                </span>
-                <button class="btn sm" type="button" data-go="call" style="margin-left:auto">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="13" height="12" rx="2.5"/><path d="m15 11 6-3.5v9L15 13"/></svg>
-                  <span data-bn="যোগ দিন" data-en="Join">যোগ দিন</span>
+            </div>
+
+            <div class="field">
+              <label data-en="Password" data-bn="পাসওয়ার্ড">Password</label>
+              <div class="inp">
+                <span class="grow" style="letter-spacing:.2em">********</span>
+                <button class="eye" type="button" aria-label="Show password">
+                  <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round">
+                    <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path d="m3 3 18 18"/>
+                  </svg>
                 </button>
               </div>
             </div>
-          </section>
 
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="চলমান" data-en="In progress">চলমান</h2></div>
+            <button class="forgot" data-en="Forgot Password?" data-bn="পাসওয়ার্ড ভুলে গেছেন?">Forgot Password?</button>
+            <button class="btn-primary" data-go="home" data-en="Login" data-bn="লগইন">Login</button>
 
-            <button class="card tapp" type="button" data-go="hometest" style="align-items:stretch">
-              <div class="row" style="align-items:flex-start">
-                <span class="ic quiet"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v9.5L6.4 19a2.6 2.6 0 0 0 2.2 4h6.8a2.6 2.6 0 0 0 2.2-4L14 12.5V3"/></svg></span>
-                <div class="grow">
-                  <div class="n1" data-bn="হোম স্যাম্পল কালেকশন · CBC" data-en="Home sample collection · CBC">হোম স্যাম্পল কালেকশন · CBC</div>
-                  <div class="n2" data-bn="রিপোর্ট আগামীকাল দুপুরের মধ্যে" data-en="Report by tomorrow noon">রিপোর্ট আগামীকাল দুপুরের মধ্যে</div>
-                </div>
-                <span class="tag brand" data-bn="প্রসেসিং" data-en="Processing">প্রসেসিং</span>
-              </div>
-              <div>
-                <div class="steps">
-                  <div class="step done"><span class="pt"></span><span class="ln"></span></div>
-                  <div class="step done"><span class="pt"></span><span class="ln"></span></div>
-                  <div class="step done"><span class="pt"></span><span class="ln"></span></div>
-                  <div class="step now"><span class="pt"></span><span class="ln"></span></div>
-                  <div class="step"><span class="pt"></span></div>
-                </div>
-                <div class="steplabels">
-                  <span data-bn="অনুরোধ" data-en="Requested">অনুরোধ</span>
-                  <span data-bn="এজেন্ট" data-en="Agent">এজেন্ট</span>
-                  <span data-bn="সংগ্রহ" data-en="Collected">সংগ্রহ</span>
-                  <span class="on" data-bn="প্রসেসিং" data-en="Processing">প্রসেসিং</span>
-                  <span data-bn="রিপোর্ট" data-en="Report">রিপোর্ট</span>
-                </div>
-              </div>
-            </button>
+            <p class="regline">
+              <span data-en="Don't have an account?" data-bn="অ্যাকাউন্ট নেই?">Don't have an account?</span>
+              <button data-en="Register Now" data-bn="রেজিস্টার করুন">Register Now</button>
+            </p>
 
-            <button class="card tapp" type="button" data-go="claim" style="align-items:stretch">
-              <div class="row" style="align-items:flex-start">
-                <span class="ic quiet"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h14v17l-2.3-1.6-2.4 1.6-2.3-1.6-2.4 1.6L7.3 19 5 20.5Z"/><path d="M9 8h6M9 12h6"/></svg></span>
-                <div class="grow">
-                  <div class="n1 money" data-bn="ক্যাশব্যাক ক্লেইম · ৳৮,৫০০" data-en="Cash-back claim · ৳8,500">ক্যাশব্যাক ক্লেইম · ৳৮,৫০০</div>
-                  <div class="n2" data-bn="ল্যাবএইড, ধানমন্ডি · জমা ১৯ জুলাই" data-en="Labaid, Dhanmondi · filed 19 Jul">ল্যাবএইড, ধানমন্ডি · জমা ১৯ জুলাই</div>
-                </div>
-                <span class="tag warn" data-bn="রিভিউ চলছে" data-en="Under review">রিভিউ চলছে</span>
-              </div>
-              <div>
-                <div class="steps">
-                  <div class="step done"><span class="pt"></span><span class="ln"></span></div>
-                  <div class="step now"><span class="pt"></span><span class="ln"></span></div>
-                  <div class="step"><span class="pt"></span><span class="ln"></span></div>
-                  <div class="step"><span class="pt"></span></div>
-                </div>
-                <div class="steplabels">
-                  <span data-bn="জমা" data-en="Submitted">জমা</span>
-                  <span class="on" data-bn="রিভিউ" data-en="Review">রিভিউ</span>
-                  <span data-bn="অনুমোদন" data-en="Approved">অনুমোদন</span>
-                  <span data-bn="পরিশোধ" data-en="Paid">পরিশোধ</span>
-                </div>
-              </div>
-            </button>
-          </section>
+            <div class="altline" data-en="Or" data-bn="অথবা">Or</div>
 
-          <section class="sec">
-            <div class="sechead">
-              <h2 data-bn="আপনার জন্য" data-en="For you">আপনার জন্য</h2>
-              <button class="link" type="button" data-bn="সব লেখা" data-en="All articles">সব লেখা</button>
-            </div>
-            <div class="card" style="flex-direction:row;align-items:center;gap:11px;padding:11px">
-              <span style="flex:none;width:54px;height:54px;border-radius:10px;display:grid;place-items:center;color:#EAF2EE;background:linear-gradient(145deg,#146754,#0A3D31)">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3.5l2-5 3.5 10 2.5-7 1.8 2h4.7"/></svg>
-              </span>
-              <span style="min-width:0">
-                <span style="display:block;font-size:9.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)"
-                      data-bn="শিশুস্বাস্থ্য" data-en="Child health">শিশুস্বাস্থ্য</span>
-                <span style="display:block;font-size:13px;font-weight:600;line-height:1.35;margin-top:3px"
-                      data-bn="শীতে শিশুদের শ্বাসকষ্ট: কখন ডাক্তার দেখাবেন" data-en="Winter breathing trouble in children: when to see a doctor">শীতে শিশুদের শ্বাসকষ্ট: কখন ডাক্তার দেখাবেন</span>
-                <span style="display:block;font-size:10.5px;color:var(--ink-3);margin-top:4px"
-                      data-bn="৪ মিনিট পড়া · ডা. শারমিন সুলতানা" data-en="4 min read · Dr. Sharmin Sultana">৪ মিনিট পড়া · ডা. শারমিন সুলতানা</span>
-              </span>
-            </div>
-          </section>
-        </div>
-      </section>
-
-      <!-- ==================== AI CHAT ==================== -->
-      <section class="view" id="v-ai">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1><span data-bn="স্বাস্থ্য সহকারী" data-en="Health assistant">স্বাস্থ্য সহকারী</span>
-            <span class="sub" data-bn="উপসর্গ যাচাই · বাংলা ও ইংরেজি" data-en="Symptom check · Bangla &amp; English">উপসর্গ যাচাই · বাংলা ও ইংরেজি</span></h1>
-          <span class="tag brand" data-bn="২৪/৭" data-en="24/7">২৪/৭</span>
-        </header>
-
-        <div class="body">
-          <div class="chat">
-            <div class="msg ai">
-              <span class="sparkmini"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5 13.7 8 19 9.8 13.7 11.6 12 17l-1.7-5.4L5 9.8 10.3 8Z"/></svg></span>
-              <div class="bub" data-bn="নমস্কার রুমানা। কার জন্য জানতে চাইছেন, আর কী সমস্যা হচ্ছে?" data-en="Hello Rumana. Who is this for, and what's going on?">নমস্কার রুমানা। কার জন্য জানতে চাইছেন, আর কী সমস্যা হচ্ছে?</div>
-            </div>
-            <div class="msg me">
-              <div class="bub" data-bn="আমার মায়ের দুই দিন ধরে জ্বর আর শুকনো কাশি" data-en="My mother has had a fever and dry cough for two days">আমার মায়ের দুই দিন ধরে জ্বর আর শুকনো কাশি</div>
-            </div>
-            <div class="msg ai">
-              <span class="sparkmini"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5 13.7 8 19 9.8 13.7 11.6 12 17l-1.7-5.4L5 9.8 10.3 8Z"/></svg></span>
-              <div class="bub" data-bn="জ্বর কত ছিল, মেপেছিলেন?" data-en="How high was the fever — did you measure it?">জ্বর কত ছিল, মেপেছিলেন?</div>
-            </div>
-            <div class="msg me">
-              <div class="bub money" data-bn="১০১–১০৩°F" data-en="101–103°F">১০১–১০৩°F</div>
-            </div>
-            <div class="msg ai">
-              <span class="sparkmini"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5 13.7 8 19 9.8 13.7 11.6 12 17l-1.7-5.4L5 9.8 10.3 8Z"/></svg></span>
-              <div class="bub" data-bn="শ্বাস নিতে কষ্ট হচ্ছে বা বুকে চাপ লাগছে?" data-en="Any difficulty breathing or tightness in the chest?">শ্বাস নিতে কষ্ট হচ্ছে বা বুকে চাপ লাগছে?</div>
-            </div>
-            <div class="quickreplies">
-              <button class="qr-btn" type="button" data-bn="না" data-en="No">না</button>
-              <button class="qr-btn" type="button" data-bn="একটু" data-en="A little">একটু</button>
-              <button class="qr-btn" type="button" data-bn="হ্যাঁ, খুব" data-en="Yes, badly">হ্যাঁ, খুব</button>
-            </div>
-
-            <div class="triage">
-              <div class="row">
-                <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3.5l2-5 3.5 10 2.5-7 1.8 2h4.7"/></svg></span>
-                <div class="grow">
-                  <div class="n1" data-bn="মেডিসিন বিশেষজ্ঞ" data-en="Internal Medicine">মেডিসিন বিশেষজ্ঞ</div>
-                  <div class="n2" data-bn="৫টি প্রশ্নের ভিত্তিতে সুপারিশ" data-en="Recommended from 5 questions">৫টি প্রশ্নের ভিত্তিতে সুপারিশ</div>
-                </div>
-                <span class="tag warn" data-bn="অগ্রাধিকার: মাঝারি" data-en="Urgency: moderate">অগ্রাধিকার: মাঝারি</span>
-              </div>
-              <div class="divider"></div>
-              <div class="row">
-                <div class="avatar sm presence">তহ</div>
-                <div class="grow">
-                  <div class="n1" data-bn="ডা. তানভীর হাসান" data-en="Dr. Tanvir Hasan">ডা. তানভীর হাসান</div>
-                  <div class="n2" data-bn="এখন অনলাইন · আজ রাত ৯:৩০ ফাঁকা" data-en="Online now · 9:30 PM free tonight">এখন অনলাইন · আজ রাত ৯:৩০ ফাঁকা</div>
-                </div>
-              </div>
-              <button class="btn full" type="button" data-go="docprofile">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
-                <span data-bn="এক ট্যাপে বুক করুন" data-en="Book in one tap">এক ট্যাপে বুক করুন</span>
-              </button>
-              <div class="disclaim">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.1"/></svg>
-                <span data-bn="এটি রোগ নির্ণয় নয়। কোন বিভাগে দেখাবেন শুধু সেই পরামর্শ দেওয়া হয় — ওষুধ বা চিকিৎসা নয়।"
-                      data-en="This is not a diagnosis. It only suggests which specialty to see — never medication or treatment.">এটি রোগ নির্ণয় নয়। কোন বিভাগে দেখাবেন শুধু সেই পরামর্শ দেওয়া হয় — ওষুধ বা চিকিৎসা নয়।</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="composer">
-          <div class="fake" data-bn="আরও কিছু লিখুন…" data-en="Type anything else…">আরও কিছু লিখুন…</div>
-          <button class="mic" type="button" aria-label="Voice">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>
-          </button>
-        </div>
-      </section>
-
-      <!-- ==================== DOCTORS ==================== -->
-      <section class="view" id="v-doctors">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1><span data-bn="ডাক্তার" data-en="Doctors">ডাক্তার</span>
-            <span class="sub" data-bn="৪৭ জন এখন অনলাইন" data-en="47 online right now">৪৭ জন এখন অনলাইন</span></h1>
-          <div class="langtog" role="group" aria-label="Language">
-            <button type="button" data-lang="bn" aria-pressed="true">বাং</button>
-            <button type="button" data-lang="en" aria-pressed="false">EN</button>
-          </div>
-        </header>
-
-        <div class="body">
-          <div class="field">
-            <div class="val ph">
-              <span data-bn="নাম বা বিশেষত্ব খুঁজুন" data-en="Search name or specialty">নাম বা বিশেষত্ব খুঁজুন</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
-            </div>
-          </div>
-
-          <div class="chips">
-            <button class="chip" type="button" aria-pressed="true" data-bn="এখন অনলাইন" data-en="Online now">এখন অনলাইন</button>
-            <button class="chip" type="button" data-bn="মেডিসিন" data-en="Medicine">মেডিসিন</button>
-            <button class="chip" type="button" data-bn="শিশু" data-en="Paediatrics">শিশু</button>
-            <button class="chip" type="button" data-bn="গাইনি" data-en="Gynae">গাইনি</button>
-            <button class="chip" type="button" data-bn="চর্ম" data-en="Skin">চর্ম</button>
-            <button class="chip" type="button" data-bn="হৃদরোগ" data-en="Cardiology">হৃদরোগ</button>
-          </div>
-
-          <div class="listcard">
-            <button class="tapp" type="button" data-go="docprofile">
-              <div class="row">
-                <div class="avatar presence">তহ</div>
-                <div class="grow">
-                  <div class="n1" data-bn="ডা. তানভীর হাসান" data-en="Dr. Tanvir Hasan">ডা. তানভীর হাসান</div>
-                  <div class="n2" data-bn="মেডিসিন · বাংলা, English · ১২ বছর" data-en="Medicine · Bangla, English · 12 yrs">মেডিসিন · বাংলা, English · ১২ বছর</div>
-                  <div style="display:flex;gap:6px;margin-top:7px">
-                    <span class="tag ok" data-bn="এখনই কথা বলা যাবে" data-en="Available now">এখনই কথা বলা যাবে</span>
-                    <span class="tag brand" data-bn="প্ল্যানে ফ্রি" data-en="Free on plan">প্ল্যানে ফ্রি</span>
-                  </div>
-                </div>
-                <span style="font-size:11.5px;font-weight:700;color:var(--brass);display:flex;align-items:center;gap:3px">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.8 2.7 6 6.5.7-4.9 4.4 1.4 6.4L12 17l-5.7 3.3 1.4-6.4L2.8 9.5l6.5-.7Z"/></svg>
-                  <span class="money">৪.৯</span>
-                </span>
-              </div>
-            </button>
-            <button class="tapp" type="button" data-go="docprofile">
-              <div class="row">
-                <div class="avatar presence">শস</div>
-                <div class="grow">
-                  <div class="n1" data-bn="ডা. শারমিন সুলতানা" data-en="Dr. Sharmin Sultana">ডা. শারমিন সুলতানা</div>
-                  <div class="n2" data-bn="শিশু বিশেষজ্ঞ · বাংলা · ৯ বছর" data-en="Paediatrics · Bangla · 9 yrs">শিশু বিশেষজ্ঞ · বাংলা · ৯ বছর</div>
-                  <div style="display:flex;gap:6px;margin-top:7px">
-                    <span class="tag ok" data-bn="এখনই কথা বলা যাবে" data-en="Available now">এখনই কথা বলা যাবে</span>
-                  </div>
-                </div>
-                <span style="font-size:11.5px;font-weight:700;color:var(--brass);display:flex;align-items:center;gap:3px">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.8 2.7 6 6.5.7-4.9 4.4 1.4 6.4L12 17l-5.7 3.3 1.4-6.4L2.8 9.5l6.5-.7Z"/></svg>
-                  <span class="money">৪.৮</span>
-                </span>
-              </div>
-            </button>
-            <button class="tapp" type="button" data-go="docprofile">
-              <div class="row">
-                <div class="avatar">মআ</div>
-                <div class="grow">
-                  <div class="n1" data-bn="ডা. মাহবুব আলম" data-en="Dr. Mahbub Alam">ডা. মাহবুব আলম</div>
-                  <div class="n2" data-bn="হৃদরোগ · বাংলা, English · ১৮ বছর" data-en="Cardiology · Bangla, English · 18 yrs">হৃদরোগ · বাংলা, English · ১৮ বছর</div>
-                  <div style="display:flex;gap:6px;margin-top:7px">
-                    <span class="tag warn" data-bn="পরবর্তী স্লট কাল ১১:০০" data-en="Next slot tomorrow 11:00">পরবর্তী স্লট কাল ১১:০০</span>
-                  </div>
-                </div>
-                <span style="font-size:11.5px;font-weight:700;color:var(--brass);display:flex;align-items:center;gap:3px">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.8 2.7 6 6.5.7-4.9 4.4 1.4 6.4L12 17l-5.7 3.3 1.4-6.4L2.8 9.5l6.5-.7Z"/></svg>
-                  <span class="money">৪.৭</span>
-                </span>
-              </div>
-            </button>
-            <button class="tapp" type="button" data-go="docprofile">
-              <div class="row">
-                <div class="avatar presence">নজ</div>
-                <div class="grow">
-                  <div class="n1" data-bn="ডা. নুসরাত জাহান" data-en="Dr. Nusrat Jahan">ডা. নুসরাত জাহান</div>
-                  <div class="n2" data-bn="চর্ম ও যৌন · বাংলা · ৭ বছর" data-en="Dermatology · Bangla · 7 yrs">চর্ম ও যৌন · বাংলা · ৭ বছর</div>
-                  <div style="display:flex;gap:6px;margin-top:7px">
-                    <span class="tag ok" data-bn="এখনই কথা বলা যাবে" data-en="Available now">এখনই কথা বলা যাবে</span>
-                  </div>
-                </div>
-                <span style="font-size:11.5px;font-weight:700;color:var(--brass);display:flex;align-items:center;gap:3px">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2.8 2.7 6 6.5.7-4.9 4.4 1.4 6.4L12 17l-5.7 3.3 1.4-6.4L2.8 9.5l6.5-.7Z"/></svg>
-                  <span class="money">৪.৯</span>
-                </span>
-              </div>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== DOCTOR PROFILE ==================== -->
-      <section class="view" id="v-docprofile">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1 data-bn="ডাক্তারের প্রোফাইল" data-en="Doctor profile">ডাক্তারের প্রোফাইল</h1>
-        </header>
-
-        <div class="body">
-          <div class="row" style="gap:13px">
-            <div class="avatar lg presence">তহ</div>
-            <div class="grow">
-              <div style="font-size:17px;font-weight:650" data-bn="ডা. তানভীর হাসান" data-en="Dr. Tanvir Hasan">ডা. তানভীর হাসান</div>
-              <div class="n2" data-bn="MBBS, FCPS (মেডিসিন)" data-en="MBBS, FCPS (Medicine)">MBBS, FCPS (মেডিসিন)</div>
-              <div style="display:flex;gap:6px;margin-top:8px">
-                <span class="tag ok" data-bn="BMDC যাচাইকৃত" data-en="BMDC verified">BMDC যাচাইকৃত</span>
-                <span class="tag brand" data-bn="এখন অনলাইন" data-en="Online now">এখন অনলাইন</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="card" style="flex-direction:row;justify-content:space-around;text-align:center;padding:14px 10px">
-            <div>
-              <div style="font-size:17px;font-weight:700" class="money">৪.৯</div>
-              <div class="n2" data-bn="রেটিং · ৮১২" data-en="Rating · 812">রেটিং · ৮১২</div>
-            </div>
-            <div style="width:1px;background:var(--line-soft)"></div>
-            <div>
-              <div style="font-size:17px;font-weight:700" class="money">৩,৪০০+</div>
-              <div class="n2" data-bn="রোগী দেখেছেন" data-en="Patients seen">রোগী দেখেছেন</div>
-            </div>
-            <div style="width:1px;background:var(--line-soft)"></div>
-            <div>
-              <div style="font-size:17px;font-weight:700" class="money">১২</div>
-              <div class="n2" data-bn="বছরের অভিজ্ঞতা" data-en="Years">বছরের অভিজ্ঞতা</div>
-            </div>
-          </div>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="কীভাবে কথা বলবেন" data-en="How to consult">কীভাবে কথা বলবেন</h2></div>
-            <div class="chips">
-              <button class="chip" type="button" aria-pressed="true" data-bn="ভিডিও" data-en="Video">ভিডিও</button>
-              <button class="chip" type="button" data-bn="অডিও" data-en="Audio">অডিও</button>
-              <button class="chip" type="button" data-bn="চ্যাট" data-en="Chat">চ্যাট</button>
-              <button class="chip" type="button" data-bn="বাসায় ভিজিট" data-en="Home visit">বাসায় ভিজিট</button>
-            </div>
-          </section>
-
-          <section class="sec">
-            <div class="sechead">
-              <h2 data-bn="আজকের ফাঁকা সময়" data-en="Today's open slots">আজকের ফাঁকা সময়</h2>
-              <button class="link" type="button" data-bn="অন্য দিন" data-en="Other days">অন্য দিন</button>
-            </div>
-            <div class="chips">
-              <button class="chip money" type="button" data-bn="৮:০০" data-en="8:00 PM">৮:০০</button>
-              <button class="chip money" type="button" data-bn="৮:৩০" data-en="8:30 PM">৮:৩০</button>
-              <button class="chip money" type="button" aria-pressed="true" data-bn="৯:৩০" data-en="9:30 PM">৯:৩০</button>
-              <button class="chip money" type="button" data-bn="১০:০০" data-en="10:00 PM">১০:০০</button>
-              <button class="chip money" type="button" data-bn="১০:৩০" data-en="10:30 PM">১০:৩০</button>
-            </div>
-          </section>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="রোগীরা যা বলেছেন" data-en="What patients say">রোগীরা যা বলেছেন</h2></div>
-            <div class="card">
-              <div class="row">
-                <div class="avatar sm" style="background:var(--brand-tint);color:var(--brand)">সআ</div>
-                <div class="grow">
-                  <div class="n1" data-bn="সাদিয়া আফরিন" data-en="Sadia Afrin">সাদিয়া আফরিন</div>
-                  <div class="n2" data-bn="৩ দিন আগে" data-en="3 days ago">৩ দিন আগে</div>
-                </div>
-                <span style="color:var(--brass);font-size:11px;letter-spacing:1px">★★★★★</span>
-              </div>
-              <div style="font-size:12.5px;color:var(--ink-2);line-height:1.5"
-                   data-bn="“রাত ১১টায় কল দিয়েছিলাম, সাথে সাথে ধরলেন। ধৈর্য ধরে পুরোটা শুনেছেন, প্রেসক্রিপশনও সাথে সাথে চলে এসেছে।”"
-                   data-en="“Called at 11pm and he picked up right away. Listened to everything patiently, and the prescription came through immediately.”">“রাত ১১টায় কল দিয়েছিলাম, সাথে সাথে ধরলেন। ধৈর্য ধরে পুরোটা শুনেছেন, প্রেসক্রিপশনও সাথে সাথে চলে এসেছে।”</div>
-            </div>
-          </section>
-        </div>
-
-        <div class="stickyfoot">
-          <div>
-            <div style="font-size:16px;font-weight:700" class="money" data-bn="৳০" data-en="৳0">৳০</div>
-            <div class="n2" data-bn="Gold প্ল্যানে অন্তর্ভুক্ত" data-en="Included in Gold">Gold প্ল্যানে অন্তর্ভুক্ত</div>
-          </div>
-          <button class="btn" type="button" data-go="call" style="flex:1">
-            <span data-bn="রাত ৯:৩০ — বুক করুন" data-en="Book 9:30 PM">রাত ৯:৩০ — বুক করুন</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- ==================== VIDEO CALL ==================== -->
-      <section class="view" id="v-call">
-        <div class="stagevid">
-          <div class="vidname">
-            <span class="avatar sm" style="width:26px;height:26px;border-radius:8px;font-size:11px">তহ</span>
-            <span data-bn="ডা. তানভীর হাসান" data-en="Dr. Tanvir Hasan">ডা. তানভীর হাসান</span>
-          </div>
-          <div class="vidtimer"><span class="rec"></span><span class="money">০৬:১২</span></div>
-
-          <div class="bigav">তহ</div>
-          <div style="font-size:13px;color:rgba(231,239,235,.66);font-weight:600"
-               data-bn="মেডিসিন · পরামর্শ চলছে" data-en="Internal Medicine · consultation live">মেডিসিন · পরামর্শ চলছে</div>
-
-          <div class="pip"><span data-bn="আপনি" data-en="You">আপনি</span></div>
-
-          <div class="nettoast">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><path d="M12 19.5v.1"/><path d="M8.5 15.5a5 5 0 0 1 7 0M5 12a10 10 0 0 1 14 0"/></svg>
-            <span data-bn="নেটওয়ার্ক দুর্বল — কল অডিওতে চলে যাচ্ছে, কথা চালিয়ে যান"
-                  data-en="Weak network — switching to audio only, keep talking">নেটওয়ার্ক দুর্বল — কল অডিওতে চলে যাচ্ছে, কথা চালিয়ে যান</span>
-          </div>
-        </div>
-
-        <div class="callbar">
-          <button class="cbtn" type="button" aria-label="Mute">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2.5" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21"/></svg>
-          </button>
-          <button class="cbtn off" type="button" aria-label="Camera off">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="13" height="12" rx="2.5"/><path d="m15 11 6-3.5v9L15 13"/><path d="m3 3 18 18"/></svg>
-          </button>
-          <button class="cbtn" type="button" aria-label="Chat">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3.5 20.5l1.4-5.9A8 8 0 1 1 21 12Z"/></svg>
-          </button>
-          <button class="cbtn end" type="button" data-go="prescription" aria-label="End call">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9.5c6-4 12.5-4 19 0v3.6l-4.3.7-1-3a12.6 12.6 0 0 0-8.4 0l-1 3-4.3-.7Z" transform="rotate(135 12 12)"/></svg>
-          </button>
-        </div>
-      </section>
-
-      <!-- ==================== PRESCRIPTION ==================== -->
-      <section class="view" id="v-prescription">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1><span data-bn="ই-প্রেসক্রিপশন" data-en="E-prescription">ই-প্রেসক্রিপশন</span>
-            <span class="sub" data-bn="কল শেষের ২ মিনিটের মধ্যে এসেছে" data-en="Arrived 2 minutes after the call">কল শেষের ২ মিনিটের মধ্যে এসেছে</span></h1>
-        </header>
-
-        <div class="body">
-          <div class="rx">
-            <div class="rx-head">
-              <div>
-                <div class="n" data-bn="ডা. তানভীর হাসান" data-en="Dr. Tanvir Hasan">ডা. তানভীর হাসান</div>
-                <div class="s" data-bn="MBDC A-42817 · ২১ জুলাই ২০২৬, রাত ৯:৪২" data-en="BMDC A-42817 · 21 Jul 2026, 9:42 PM">MBDC A-42817 · ২১ জুলাই ২০২৬, রাত ৯:৪২</div>
-              </div>
-              <span class="rx-glyph">℞</span>
-            </div>
-            <div class="rx-body">
-              <div class="row" style="padding-bottom:12px;border-bottom:1px solid var(--line-soft)">
-                <div class="grow">
-                  <div class="n2" data-bn="রোগী" data-en="Patient">রোগী</div>
-                  <div class="n1" data-bn="নাজমা বেগম · ৫৮ বছর" data-en="Nazma Begum · 58 yrs">নাজমা বেগম · ৫৮ বছর</div>
-                </div>
-                <span class="tag brass" data-bn="পরিবার" data-en="Family">পরিবার</span>
-              </div>
-
-              <div class="med">
-                <span class="num">১</span>
-                <div>
-                  <div class="mn">Napa Extra 500mg</div>
-                  <div class="md" data-bn="১+১+১ · খাবারের পরে · ৫ দিন" data-en="1+1+1 · after meals · 5 days">১+১+১ · খাবারের পরে · ৫ দিন</div>
-                </div>
-              </div>
-              <div class="med">
-                <span class="num">২</span>
-                <div>
-                  <div class="mn">Ambrox Syrup</div>
-                  <div class="md" data-bn="২ চা-চামচ · দিনে ৩ বার · ৭ দিন" data-en="2 tsp · 3× daily · 7 days">২ চা-চামচ · দিনে ৩ বার · ৭ দিন</div>
-                </div>
-              </div>
-              <div class="med">
-                <span class="num">৩</span>
-                <div>
-                  <div class="mn">Sergel 20mg</div>
-                  <div class="md" data-bn="১+০+১ · খালি পেটে · ৭ দিন" data-en="1+0+1 · empty stomach · 7 days">১+০+১ · খালি পেটে · ৭ দিন</div>
-                </div>
-              </div>
-
-              <div style="background:var(--surface-2);border-radius:11px;padding:11px 12px;font-size:12px;line-height:1.55;color:var(--ink-2)">
-                <div style="font-size:10px;font-weight:750;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-bottom:5px"
-                     data-bn="পরামর্শ" data-en="Advice">পরামর্শ</div>
-                <span data-bn="প্রচুর পানি ও তরল খাবার। ৩ দিনেও জ্বর না কমলে বা শ্বাসকষ্ট শুরু হলে সাথে সাথে জানাবেন। বুকের এক্স-রে লাগতে পারে।"
-                      data-en="Plenty of fluids. If the fever doesn't settle in 3 days, or breathing gets difficult, tell us immediately. A chest X-ray may be needed.">প্রচুর পানি ও তরল খাবার। ৩ দিনেও জ্বর না কমলে বা শ্বাসকষ্ট শুরু হলে সাথে সাথে জানাবেন। বুকের এক্স-রে লাগতে পারে।</span>
-              </div>
-
-              <div class="sign">
-                <span class="signglyph">T. Hasan</span>
-                <div style="margin-left:auto;text-align:right">
-                  <div class="tag ok" style="display:inline-block" data-bn="ডিজিটালি সাইনড" data-en="Digitally signed">ডিজিটালি সাইনড</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn full" type="button" data-go="pharmacy">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.2" y="8.5" width="19.6" height="11" rx="5.5" transform="rotate(-45 12 14)"/><path d="m8.4 8.4 7.2 7.2"/></svg>
-            <span data-bn="এই প্রেসক্রিপশন থেকে ওষুধ অর্ডার" data-en="Order these medicines">এই প্রেসক্রিপশন থেকে ওষুধ অর্ডার</span>
-          </button>
-          <button class="btn full quiet" type="button">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M7.5 10.5 12 15l4.5-4.5M4.5 19.5h15"/></svg>
-            <span data-bn="PDF ডাউনলোড" data-en="Download PDF">PDF ডাউনলোড</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- ==================== CARD ==================== -->
-      <section class="view" id="v-card">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1 data-bn="আমার হেলথ কার্ড" data-en="My health card">আমার হেলথ কার্ড</h1>
-          <div class="langtog" role="group" aria-label="Language">
-            <button type="button" data-lang="bn" aria-pressed="true">বাং</button>
-            <button type="button" data-lang="en" aria-pressed="false">EN</button>
-          </div>
-        </header>
-
-        <div class="body">
-          <div class="hcard">
-            <div class="hcard-top">
-              <div class="mark"><span data-bn="কেয়ারফুল লাইফ" data-en="Careful Life">কেয়ারফুল লাইফ</span>
-                <small data-bn="হেলথ কার্ড" data-en="Health Card">হেলথ কার্ড</small></div>
-              <span class="tier">GOLD</span>
-            </div>
-            <div style="display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:18px">
-              <div class="qr big" data-qr aria-hidden="true"></div>
-              <div style="font-size:11px;color:rgba(234,242,238,.62);text-align:center"
-                   data-bn="হাসপাতালের কাউন্টারে স্ক্যান করান" data-en="Scan at the hospital counter">হাসপাতালের কাউন্টারে স্ক্যান করান</div>
-              <div class="cardno" style="font-size:17px">CL 4471 8820</div>
-              <div class="cardmeta" style="margin-top:0;justify-content:center">
-                <div><span data-bn="সদস্য" data-en="Member">সদস্য</span>
-                  <strong data-bn="রুমানা আক্তার" data-en="Rumana Akter">রুমানা আক্তার</strong></div>
-                <div><span data-bn="মেয়াদ" data-en="Valid till">মেয়াদ</span>
-                  <strong data-bn="১২ মার্চ ২০২৭" data-en="12 Mar 2027">১২ মার্চ ২০২৭</strong></div>
-              </div>
-            </div>
-          </div>
-
-          <div style="display:flex;gap:9px">
-            <button class="btn ghost" type="button" style="flex:1">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5v11M7.5 10.5 12 15l4.5-4.5M4.5 19.5h15"/></svg>
-              <span data-bn="PDF কার্ড" data-en="PDF card">PDF কার্ড</span>
-            </button>
-            <button class="btn ghost" type="button" data-go="plans" style="flex:1">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V4M6 10l6-6 6 6"/></svg>
-              <span data-bn="আপগ্রেড" data-en="Upgrade">আপগ্রেড</span>
-            </button>
-          </div>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="এ বছর কতটা ব্যবহার হয়েছে" data-en="Used this year">এ বছর কতটা ব্যবহার হয়েছে</h2></div>
-            <div class="card" style="gap:14px">
-              <div>
-                <div class="row" style="margin-bottom:6px">
-                  <span style="font-size:12.5px;font-weight:600" data-bn="টেলিকনসালটেশন" data-en="Teleconsultations">টেলিকনসালটেশন</span>
-                  <span class="money" style="margin-left:auto;font-size:12px;color:var(--ink-3)"
-                        data-bn="৪ · সীমাহীন" data-en="4 · unlimited">৪ · সীমাহীন</span>
-                </div>
-                <div class="meter"><i style="width:22%"></i></div>
-              </div>
-              <div>
-                <div class="row" style="margin-bottom:6px">
-                  <span style="font-size:12.5px;font-weight:600" data-bn="বাসায় টেস্ট" data-en="Home tests">বাসায় টেস্ট</span>
-                  <span class="money" style="margin-left:auto;font-size:12px;color:var(--ink-3)">২ / ৪</span>
-                </div>
-                <div class="meter"><i style="width:50%"></i></div>
-              </div>
-              <div>
-                <div class="row" style="margin-bottom:6px">
-                  <span style="font-size:12.5px;font-weight:600" data-bn="ক্যাশব্যাক" data-en="Cash-back">ক্যাশব্যাক</span>
-                  <span class="money" style="margin-left:auto;font-size:12px;color:var(--ink-3)"
-                        data-bn="৳৮,৫০০ / ৳৫০,০০০" data-en="৳8,500 / ৳50,000">৳৮,৫০০ / ৳৫০,০০০</span>
-                </div>
-                <div class="meter brass"><i style="width:17%"></i></div>
-              </div>
-            </div>
-          </section>
-
-          <section class="sec">
-            <div class="sechead">
-              <h2 data-bn="পরিবারের কার্ড" data-en="Family cards">পরিবারের কার্ড</h2>
-              <button class="link" type="button" data-bn="+ যোগ করুন" data-en="+ Add">+ যোগ করুন</button>
-            </div>
-            <div class="listcard">
-              <div class="row">
-                <div class="avatar sm" style="background:var(--brand-tint);color:var(--brand)">না</div>
-                <div class="grow">
-                  <div class="n1" data-bn="নাজমা বেগম · মা" data-en="Nazma Begum · Mother">নাজমা বেগম · মা</div>
-                  <div class="n2">CL 4471 8821</div>
-                </div>
-                <span class="tag ok" data-bn="সক্রিয়" data-en="Active">সক্রিয়</span>
-              </div>
-              <div class="row">
-                <div class="avatar sm" style="background:var(--brand-tint);color:var(--brand)">সা</div>
-                <div class="grow">
-                  <div class="n1" data-bn="সাফওয়ান রহমান · ছেলে" data-en="Safwan Rahman · Son">সাফওয়ান রহমান · ছেলে</div>
-                  <div class="n2">CL 4471 8822</div>
-                </div>
-                <span class="tag ok" data-bn="সক্রিয়" data-en="Active">সক্রিয়</span>
-              </div>
-              <div class="row">
-                <div class="avatar sm" style="background:var(--surface-2);color:var(--ink-3)">?</div>
-                <div class="grow">
-                  <div class="n1" style="color:var(--ink-3)" data-bn="আরও ২ জন যোগ করা যাবে" data-en="2 more slots available">আরও ২ জন যোগ করা যাবে</div>
-                  <div class="n2" data-bn="Gold প্ল্যানে সর্বোচ্চ ৫ জন" data-en="Up to 5 on Gold">Gold প্ল্যানে সর্বোচ্চ ৫ জন</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <div class="renew">
-            <span class="dot"></span>
-            <span data-bn="১২ মার্চ অটো-নবায়ন · ৳২,৪০০" data-en="Auto-renews 12 Mar · ৳2,400">১২ মার্চ অটো-নবায়ন · ৳২,৪০০</span>
-            <span class="sp"></span>
-            <button type="button" data-bn="বন্ধ করুন" data-en="Turn off">বন্ধ করুন</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== PLANS ==================== -->
-      <section class="view" id="v-plans">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1 data-bn="প্ল্যান তুলনা" data-en="Compare plans">প্ল্যান তুলনা</h1>
-        </header>
-
-        <div class="body">
-          <div class="chips" style="justify-content:center">
-            <button class="chip" type="button" data-bn="মাসিক" data-en="Monthly">মাসিক</button>
-            <button class="chip" type="button" data-bn="৯০ দিন" data-en="90 days">৯০ দিন</button>
-            <button class="chip" type="button" aria-pressed="true" data-bn="বার্ষিক · ২ মাস ফ্রি" data-en="Yearly · 2 months free">বার্ষিক · ২ মাস ফ্রি</button>
-          </div>
-
-          <div class="plan">
-            <div class="plan-top">
-              <div>
-                <div class="plan-name">Silver</div>
-                <div class="n2" data-bn="একা ব্যবহারের জন্য" data-en="For one person">একা ব্যবহারের জন্য</div>
-              </div>
-              <div style="text-align:right">
-                <div class="plan-price">৳১,২০০<small data-bn=" /বছর" data-en=" /yr"> /বছর</small></div>
-              </div>
-            </div>
-            <ul class="feats">
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="সীমাহীন টেলিকনসালটেশন" data-en="Unlimited teleconsultation">সীমাহীন টেলিকনসালটেশন</span></li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="ডিসকাউন্ট নেটওয়ার্ক" data-en="Discount network">ডিসকাউন্ট নেটওয়ার্ক</span></li>
-              <li class="no"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span data-bn="বাসায় টেস্ট" data-en="Home diagnostics">বাসায় টেস্ট</span></li>
-              <li class="no"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg><span data-bn="পরিবার যোগ" data-en="Family add-ons">পরিবার যোগ</span></li>
-            </ul>
-            <button class="btn ghost full" type="button" data-bn="বেছে নিন" data-en="Choose">বেছে নিন</button>
-          </div>
-
-          <div class="plan cur">
-            <div class="plan-top">
-              <div>
-                <div class="plan-name" style="color:var(--brass)">Gold</div>
-                <div class="n2" data-bn="ছোট পরিবারের জন্য" data-en="For a small family">ছোট পরিবারের জন্য</div>
-              </div>
-              <div style="text-align:right">
-                <div class="plan-price">৳২,৪০০<small data-bn=" /বছর" data-en=" /yr"> /বছর</small></div>
-                <span class="tag brass" data-bn="আপনার বর্তমান প্ল্যান" data-en="Your current plan">আপনার বর্তমান প্ল্যান</span>
-              </div>
-            </div>
-            <ul class="feats">
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="Silver-এর সব সুবিধা" data-en="Everything in Silver">Silver-এর সব সুবিধা</span></li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="বছরে ৪টি হোম টেস্ট" data-en="4 home tests a year">বছরে ৪টি হোম টেস্ট</span></li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="৳৫০,০০০ পর্যন্ত ক্যাশব্যাক" data-en="Cash-back up to ৳50,000">৳৫০,০০০ পর্যন্ত ক্যাশব্যাক</span></li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="৫ জন পর্যন্ত পরিবার" data-en="Up to 5 family members">৫ জন পর্যন্ত পরিবার</span></li>
-            </ul>
-            <button class="btn quiet full" type="button" disabled data-bn="চালু আছে" data-en="Active">চালু আছে</button>
-          </div>
-
-          <div class="plan">
-            <div class="plan-top">
-              <div>
-                <div class="plan-name">Platinum</div>
-                <div class="n2" data-bn="বয়স্ক সদস্য থাকলে" data-en="If you have elderly members">বয়স্ক সদস্য থাকলে</div>
-              </div>
-              <div style="text-align:right">
-                <div class="plan-price">৳৪,৮০০<small data-bn=" /বছর" data-en=" /yr"> /বছর</small></div>
-              </div>
-            </div>
-            <ul class="feats">
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="Gold-এর সব সুবিধা" data-en="Everything in Gold">Gold-এর সব সুবিধা</span></li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="অগ্রাধিকার স্পেশালিস্ট" data-en="Priority specialist access">অগ্রাধিকার স্পেশালিস্ট</span></li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="সীমাহীন হোম টেস্ট" data-en="Unlimited home tests">সীমাহীন হোম টেস্ট</span></li>
-              <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg><span data-bn="৳১,৫০,০০০ ক্যাশব্যাক" data-en="৳150,000 cash-back">৳১,৫০,০০০ ক্যাশব্যাক</span></li>
-            </ul>
-            <button class="btn full" type="button" data-bn="আপগ্রেড করুন" data-en="Upgrade">আপগ্রেড করুন</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== HOME TEST ==================== -->
-      <section class="view" id="v-hometest">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1 data-bn="বাসায় টেস্ট" data-en="Home test">বাসায় টেস্ট</h1>
-        </header>
-
-        <div class="body">
-          <div class="card" style="border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-tint)">
-            <div class="row" style="align-items:flex-start">
-              <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v9.5L6.4 19a2.6 2.6 0 0 0 2.2 4h6.8a2.6 2.6 0 0 0 2.2-4L14 12.5V3"/></svg></span>
-              <div class="grow">
-                <div class="n1" data-bn="চলমান · CBC, ব্লাড সুগার" data-en="In progress · CBC, blood sugar">চলমান · CBC, ব্লাড সুগার</div>
-                <div class="n2" data-bn="নাজমা বেগমের জন্য · অর্ডার #HT-2291" data-en="For Nazma Begum · order #HT-2291">নাজমা বেগমের জন্য · অর্ডার #HT-2291</div>
-              </div>
-              <span class="tag brand" data-bn="প্রসেসিং" data-en="Processing">প্রসেসিং</span>
-            </div>
-            <div>
-              <div class="steps">
-                <div class="step done"><span class="pt"></span><span class="ln"></span></div>
-                <div class="step done"><span class="pt"></span><span class="ln"></span></div>
-                <div class="step done"><span class="pt"></span><span class="ln"></span></div>
-                <div class="step now"><span class="pt"></span><span class="ln"></span></div>
-                <div class="step"><span class="pt"></span></div>
-              </div>
-              <div class="steplabels">
-                <span data-bn="অনুরোধ" data-en="Requested">অনুরোধ</span>
-                <span data-bn="এজেন্ট" data-en="Agent">এজেন্ট</span>
-                <span data-bn="সংগ্রহ" data-en="Collected">সংগ্রহ</span>
-                <span class="on" data-bn="প্রসেসিং" data-en="Processing">প্রসেসিং</span>
-                <span data-bn="রিপোর্ট" data-en="Report">রিপোর্ট</span>
-              </div>
-            </div>
-            <div class="divider"></div>
-            <div class="row">
-              <div class="avatar sm" style="background:var(--brand-tint);color:var(--brand)">রক</div>
-              <div class="grow">
-                <div class="n1" data-bn="রফিক করিম · কালেকশন এজেন্ট" data-en="Rafiq Karim · collection agent">রফিক করিম · কালেকশন এজেন্ট</div>
-                <div class="n2" data-bn="সংগ্রহ হয়েছে আজ সকাল ৮:৪০" data-en="Collected today at 8:40 AM">সংগ্রহ হয়েছে আজ সকাল ৮:৪০</div>
-              </div>
-              <span class="tag ok" data-bn="রিপোর্ট কাল দুপুরে" data-en="Report tomorrow noon">রিপোর্ট কাল দুপুরে</span>
-            </div>
-          </div>
-
-          <div class="divider"></div>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="নতুন টেস্ট বুক করুন" data-en="Book a new test">নতুন টেস্ট বুক করুন</h2></div>
-            <div class="field">
-              <label data-bn="কার জন্য" data-en="For whom">কার জন্য</label>
-              <div class="val">
-                <span data-bn="রুমানা আক্তার (আপনি)" data-en="Rumana Akter (you)">রুমানা আক্তার (আপনি)</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </div>
-            </div>
-          </section>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="কোন টেস্ট" data-en="Which tests">কোন টেস্ট</h2></div>
-            <div class="chips">
-              <button class="chip" type="button" aria-pressed="true">CBC</button>
-              <button class="chip" type="button" data-bn="লিপিড প্রোফাইল" data-en="Lipid profile">লিপিড প্রোফাইল</button>
-              <button class="chip" type="button" data-bn="থাইরয়েড" data-en="Thyroid">থাইরয়েড</button>
-              <button class="chip" type="button" data-bn="ভিটামিন D" data-en="Vitamin D">ভিটামিন D</button>
-            </div>
-          </section>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="কবে" data-en="Which day">কবে</h2></div>
-            <div class="chips">
-              <button class="chip" type="button" data-bn="আজ" data-en="Today">আজ</button>
-              <button class="chip" type="button" aria-pressed="true" data-bn="কাল · ২২ জুলাই" data-en="Tomorrow · 22 Jul">কাল · ২২ জুলাই</button>
-              <button class="chip" type="button" data-bn="২৩ জুলাই" data-en="23 Jul">২৩ জুলাই</button>
-              <button class="chip" type="button" data-bn="২৪ জুলাই" data-en="24 Jul">২৪ জুলাই</button>
-            </div>
-          </section>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="২ ঘণ্টার সময়সীমা" data-en="2-hour arrival window">২ ঘণ্টার সময়সীমা</h2></div>
-            <div class="chips">
-              <button class="chip money" type="button" aria-pressed="true" data-bn="৭–৯টা সকাল" data-en="7–9 AM">৭–৯টা সকাল</button>
-              <button class="chip money" type="button" data-bn="৯–১১টা" data-en="9–11 AM">৯–১১টা</button>
-              <button class="chip money" type="button" data-bn="১১–১টা" data-en="11 AM–1 PM">১১–১টা</button>
-              <button class="chip money" type="button" data-bn="৪–৬টা বিকেল" data-en="4–6 PM">৪–৬টা বিকেল</button>
-            </div>
-          </section>
-
-          <div class="field">
-            <label data-bn="ঠিকানা" data-en="Address">ঠিকানা</label>
-            <div class="val">
-              <span data-bn="বাসা ২৪, রোড ৭, ধানমন্ডি, ঢাকা" data-en="House 24, Road 7, Dhanmondi, Dhaka">বাসা ২৪, রোড ৭, ধানমন্ডি, ঢাকা</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4 20 1-4L16.5 4.5a2.1 2.1 0 0 1 3 3L8 19l-4 1Z"/></svg>
-            </div>
-          </div>
-        </div>
-
-        <div class="stickyfoot">
-          <div>
-            <div style="font-size:16px;font-weight:700" class="money" data-bn="৳০" data-en="৳0">৳০</div>
-            <div class="n2" data-bn="৪টির মধ্যে ৩য়টি" data-en="3rd of 4 included">৪টির মধ্যে ৩য়টি</div>
-          </div>
-          <button class="btn" type="button" style="flex:1" data-bn="কাল ৭–৯টা — নিশ্চিত করুন" data-en="Confirm tomorrow 7–9 AM">কাল ৭–৯টা — নিশ্চিত করুন</button>
-        </div>
-      </section>
-
-      <!-- ==================== PHARMACY ==================== -->
-      <section class="view" id="v-pharmacy">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1 data-bn="ওষুধ" data-en="Medicine">ওষুধ</h1>
-        </header>
-
-        <div class="body">
-          <div class="card" style="border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-tint)">
-            <div class="row">
-              <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v9M7.5 12h9"/></svg></span>
-              <div class="grow">
-                <div class="n1" data-bn="অর্ডার #MD-8842 · পথে আছে" data-en="Order #MD-8842 · on the way">অর্ডার #MD-8842 · পথে আছে</div>
-                <div class="n2" data-bn="লাজ ফার্মা, ধানমন্ডি" data-en="Lazz Pharma, Dhanmondi">লাজ ফার্মা, ধানমন্ডি</div>
-              </div>
-              <span class="tag brand" data-bn="১৮ মিনিট" data-en="18 min">১৮ মিনিট</span>
-            </div>
-            <div class="maplike">
-              <svg class="route" viewBox="0 0 300 118" fill="none" preserveAspectRatio="none" aria-hidden="true">
-                <path d="M32 92 C 90 92, 96 40, 150 40 S 224 26, 262 26"
-                      stroke="var(--brand)" stroke-width="3" stroke-linecap="round" stroke-dasharray="7 7"/>
+            <button class="oauth" data-go="home">
+              <svg width="21" height="21" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#4285F4" d="M23 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.2a5.3 5.3 0 0 1-2.3 3.5v2.9h3.7c2.2-2 3.4-5 3.4-8.6Z"/>
+                <path fill="#34A853" d="M12 23.5c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.3 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.8v3A11.5 11.5 0 0 0 12 23.5Z"/>
+                <path fill="#FBBC05" d="M5.6 14.2a6.9 6.9 0 0 1 0-4.4v-3H1.8a11.5 11.5 0 0 0 0 10.4l3.8-3Z"/>
+                <path fill="#EA4335" d="M12 5.1c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.5 11.5 0 0 0 1.8 6.8l3.8 3c.9-2.7 3.4-4.7 6.4-4.7Z"/>
               </svg>
-              <span class="pin" style="left:26px;bottom:20px"></span>
-              <span class="pin" style="right:30px;top:20px;background:var(--brass);box-shadow:0 0 0 1px var(--brass)"></span>
+              <span data-en="Continue With Google" data-bn="গুগল দিয়ে চালিয়ে যান">Continue With Google</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 4. HOME ==================== -->
+      <section class="view" id="v-home">
+        <header class="apphead">
+          <div class="row1">
+            <span class="logo"><svg width="128" viewBox="0 0 260 74"><use href="#wordmark"/></svg></span>
+            <span class="sp"></span>
+            <div class="langtog" role="group" aria-label="Language">
+              <button type="button" data-lang="en" aria-pressed="true">EN</button>
+              <button type="button" data-lang="bn" aria-pressed="false">BN</button>
             </div>
-            <div class="divider"></div>
-            <div class="row">
-              <div class="avatar sm" style="background:var(--brand-tint);color:var(--brand)">জম</div>
-              <div class="grow">
-                <div class="n1" data-bn="জামাল মিয়া · ডেলিভারি" data-en="Jamal Mia · delivery">জামাল মিয়া · ডেলিভারি</div>
-                <div class="n2" data-bn="৩টি ওষুধ · ৳৭৪৫" data-en="3 items · ৳745">৩টি ওষুধ · ৳৭৪৫</div>
-              </div>
-              <button class="btn sm ghost" type="button">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"/></svg>
-                <span data-bn="কল" data-en="Call">কল</span>
-              </button>
-            </div>
+            <button class="loginbtn" data-go="login">
+              <span data-en="Login" data-bn="লগইন">Login</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><path d="m10 17 5-5-5-5"/><path d="M15 12H3"/>
+              </svg>
+            </button>
+          </div>
+          <div class="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+            </svg>
+            <span data-en="Search for products" data-bn="প্রোডাক্ট খুঁজুন">Search for products</span>
+          </div>
+        </header>
+
+        <div class="body">
+          <!-- 2x2 services -->
+          <div class="svcgrid">
+            <button class="svc" data-go="doctors">
+              <div class="t1" data-en="Instant" data-bn="ইনস্ট্যান্ট">Instant</div>
+              <div class="t2" data-en="MBBS Doctor" data-bn="এমবিবিএস ডাক্তার">MBBS Doctor</div>
+              <div class="price">৳ 50.00 <s>৳ 200.00</s></div>
+              <span class="art"><img class="ph" src="assets/svc-instant.jpg" alt="Two doctors" loading="lazy"></span>
+            </button>
+
+            <button class="svc b" data-go="doctors">
+              <div class="t1" data-en="Specialist" data-bn="স্পেশালিস্ট">Specialist</div>
+              <div class="t2" data-en="Doctor" data-bn="ডাক্তার">Doctor</div>
+              <span class="art"><img class="ph" src="assets/svc-specialist.jpg" alt="Specialist doctor" loading="lazy"></span>
+            </button>
+
+            <button class="svc c" data-tab="store">
+              <span class="newtag" data-en="New" data-bn="নতুন">New</span>
+              <div class="t1">CareLife</div>
+              <div class="t2" data-en="HealthStore" data-bn="হেলথস্টোর">HealthStore</div>
+              <span class="flash">
+                <span data-en="Flash Discount" data-bn="ফ্ল্যাশ ডিসকাউন্ট">Flash Discount</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+              </span>
+              <span class="art"><img class="ph" src="assets/svc-store.jpg" alt="Pharmacy shelves" loading="lazy"></span>
+            </button>
+
+            <button class="svc b" data-go="labs">
+              <div class="t1" data-en="Home" data-bn="হোম">Home</div>
+              <div class="t2" data-en="Lab Tests" data-bn="ল্যাব টেস্ট">Lab Tests</div>
+              <span class="art"><img class="ph" src="assets/svc-lab.jpg" alt="Blood pressure test at home" loading="lazy"></span>
+            </button>
           </div>
 
-          <div class="divider"></div>
+          <!-- other services -->
+          <section class="blk">
+            <div class="sechead"><h2 data-en="Other Services" data-bn="অন্যান্য সেবা">Other Services</h2></div>
+            <div class="rail">
+              <button class="other">
+                <span class="thumb">
+                  <span class="badge">Starts at ৳200</span>
+                  <img class="ph" src="assets/oth-mental.jpg" alt="Family together" loading="lazy">
+                </span>
+                <span class="lbl" data-en="Mental Wellness" data-bn="মানসিক সুস্থতা">Mental Wellness</span>
+              </button>
+              <button class="other">
+                <span class="thumb"><img class="ph" src="assets/oth-caregiver.jpg" alt="Caregiver with an elderly patient" loading="lazy"></span>
+                <span class="lbl" data-en="Caregiver" data-bn="কেয়ারগিভার">Caregiver</span>
+              </button>
+              <button class="other">
+                <span class="thumb"><img class="ph" src="assets/oth-tourism.jpg" alt="Travel documents and luggage" loading="lazy"></span>
+                <span class="lbl" data-en="Medical Tourism" data-bn="মেডিকেল ট্যুরিজম">Medical Tourism</span>
+              </button>
+              <button class="other" data-go="plans">
+                <span class="thumb"><img class="ph" src="assets/oth-plan.jpg" alt="Family of three generations" loading="lazy"></span>
+                <span class="lbl" data-en="Subscription Packages" data-bn="সাবস্ক্রিপশন প্যাকেজ">Subscription Packages</span>
+              </button>
+            </div>
+          </section>
 
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="নতুন অর্ডার" data-en="New order">নতুন অর্ডার</h2></div>
-            <div class="listcard">
-              <button class="tapp" type="button" data-go="prescription">
-                <div class="row">
-                  <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6Z"/><path d="M14.5 3v4.5H19"/></svg></span>
-                  <div class="grow">
-                    <div class="n1" data-bn="রেকর্ড থেকে প্রেসক্রিপশন বাছুন" data-en="Pick a prescription from records">রেকর্ড থেকে প্রেসক্রিপশন বাছুন</div>
-                    <div class="n2" data-bn="৭টি সংরক্ষিত আছে" data-en="7 saved">৭টি সংরক্ষিত আছে</div>
-                  </div>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ink-3)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+          <!-- banner carousel -->
+          <div class="carousel">
+            <div class="ctrack" data-carousel>
+              <div class="slide">
+                <img class="ph" src="assets/bn-store.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="k" data-en="HealthStore" data-bn="হেলথস্টোর">HealthStore</span>
+                  <span class="h" data-en="৳2,000 off" data-bn="৳২,০০০ ছাড়">৳2,000 off</span>
+                  <span class="s" data-en="on your first order" data-bn="প্রথম অর্ডারে">on your first order</span>
+                  <span class="cta" data-en="Order now" data-bn="অর্ডার করুন">Order now</span>
                 </div>
-              </button>
-              <button class="tapp" type="button">
-                <div class="row">
-                  <span class="ic quiet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="15" rx="2.5"/><circle cx="12" cy="12.5" r="3.4"/><path d="M8 5l1.4-2h5.2L16 5"/></svg></span>
-                  <div class="grow">
-                    <div class="n1" data-bn="কাগজের প্রেসক্রিপশন তুলুন" data-en="Photograph a paper prescription">কাগজের প্রেসক্রিপশন তুলুন</div>
-                    <div class="n2" data-bn="ছবি বা PDF আপলোড" data-en="Upload photo or PDF">ছবি বা PDF আপলোড</div>
-                  </div>
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ink-3)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
+              </div>
+              <div class="slide">
+                <img class="ph" src="assets/bn-mental.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="k" data-en="Mental Wellness" data-bn="মানসিক সুস্থতা">Mental Wellness</span>
+                  <span class="h" data-en="Care within reach" data-bn="যত্ন এখন হাতের নাগালে">Care within reach</span>
+                  <span class="s" data-en="Sessions from ৳200" data-bn="সেশন ৳২০০ থেকে">Sessions from ৳200</span>
+                  <span class="cta" data-en="Book now" data-bn="বুক করুন">Book now</span>
                 </div>
+              </div>
+              <div class="slide">
+                <img class="ph" src="assets/bn-beauty.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="k" data-en="K-Beauty" data-bn="কে-বিউটি">K-Beauty</span>
+                  <span class="h" data-en="Up to 60% off" data-bn="৬০% পর্যন্ত ছাড়">Up to 60% off</span>
+                  <span class="s" data-en="Limited-time collection" data-bn="সীমিত সময়ের কালেকশন">Limited-time collection</span>
+                  <span class="cta" data-en="Shop now" data-bn="কিনুন">Shop now</span>
+                </div>
+              </div>
+            </div>
+            <div class="dots" data-dots><i class="on"></i><i></i><i></i></div>
+          </div>
+
+          <!-- common health concerns -->
+          <section class="blk">
+            <div class="sechead"><h2 data-en="Common Health Concerns" data-bn="সাধারণ স্বাস্থ্য সমস্যা">Common Health Concerns</h2></div>
+            <div class="rail">
+              <button class="concern blue">
+                <h3 data-en="Cold, Caught &amp; Fever" data-bn="সর্দি, কাশি ও জ্বর">Cold, Caught &amp; Fever</h3>
+                <span class="art"><img class="ph" src="assets/con-fever.jpg" alt="Parent comforting a child" loading="lazy"></span>
               </button>
+              <button class="concern pink">
+                <h3 data-en="Performance Issues in Bed" data-bn="যৌন স্বাস্থ্য সমস্যা">Performance Issues in Bed</h3>
+                <span class="art"><img class="ph" src="assets/con-couple.jpg" alt="Couple together" loading="lazy"></span>
+              </button>
+              <button class="concern mint">
+                <h3 data-en="Depression &amp; Anxiety" data-bn="বিষণ্ণতা ও উদ্বেগ">Depression &amp; Anxiety</h3>
+                <span class="art"><img class="ph" src="assets/con-mind.jpg" alt="Person sitting alone" loading="lazy"></span>
+              </button>
+            </div>
+          </section>
+
+          <!-- top doctors -->
+          <section class="blk">
+            <div class="sechead">
+              <h2 data-en="Top Doctors" data-bn="শীর্ষ ডাক্তার">Top Doctors</h2>
+              <button class="link" data-go="doctors" data-en="View All" data-bn="সব দেখুন">View All</button>
+            </div>
+            <div class="chips">
+              <button class="chip" aria-pressed="true">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2-5 3 10 2-5h7"/></svg>
+                <span data-en="All" data-bn="সব">All</span>
+              </button>
+              <button class="chip">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><path d="M12 15v3a3 3 0 0 0 6 0v-2"/><circle cx="19" cy="14" r="2"/></svg>
+                <span data-en="Internal medicine" data-bn="ইন্টার্নাল মেডিসিন">Internal medicine</span>
+              </button>
+              <button class="chip">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5a3 3 0 0 0-6 0 3 3 0 0 0-2 5 3 3 0 0 0 2 5 3 3 0 0 0 6 1Zm0 0a3 3 0 0 1 6 0 3 3 0 0 1 2 5 3 3 0 0 1-2 5 3 3 0 0 1-6 1Z"/></svg>
+                <span data-en="Neurology" data-bn="নিউরোলজি">Neurology</span>
+              </button>
+              <button class="chip">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 9c0 6-8 11-8 11S4 15 4 9a4 4 0 0 1 8-1 4 4 0 0 1 8 1Z"/></svg>
+                <span data-en="Cardiology" data-bn="কার্ডিওলজি">Cardiology</span>
+              </button>
+            </div>
+
+            <div class="rail" style="margin-top:12px">
+              <div class="doc">
+                <span class="pic"><img class="ph" src="assets/doc-1.jpg" alt="Doctor portrait" loading="lazy"></span>
+                <div class="nm">Dr. Sadia Iffat Anam</div>
+                <div class="sp" data-en="General Physician" data-bn="জেনারেল ফিজিশিয়ান">General Physician</div>
+                <div class="fee">৳ 250</div>
+                <button class="bk" data-go="booking" data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট নিন">Book Appointment</button>
+              </div>
+              <div class="doc">
+                <span class="pic"><img class="ph" src="assets/doc-2.jpg" alt="Doctor portrait" loading="lazy"></span>
+                <div class="nm">Dr. Rajib Dutta</div>
+                <div class="sp" data-en="Gastroenterology" data-bn="গ্যাস্ট্রোএন্টারোলজি">Gastroenterology</div>
+                <div class="fee">৳ 600</div>
+                <button class="bk" data-go="booking" data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট নিন">Book Appointment</button>
+              </div>
+              <div class="doc">
+                <span class="pic"><img class="ph" src="assets/doc-3.jpg" alt="Doctor portrait" loading="lazy"></span>
+                <div class="nm">Dr. Nusrat Jahan</div>
+                <div class="sp" data-en="Dermatology" data-bn="ডার্মাটোলজি">Dermatology</div>
+                <div class="fee">৳ 500</div>
+                <button class="bk" data-go="booking" data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট নিন">Book Appointment</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- trending products -->
+          <section class="blk">
+            <div class="sechead">
+              <h2 data-en="Trending Products" data-bn="ট্রেন্ডিং প্রোডাক্ট">Trending Products</h2>
+              <button class="link" data-tab="store" data-en="View All" data-bn="সব দেখুন">View All</button>
+            </div>
+            <div class="rail">
+              <div class="prod">
+                <div class="top"><span class="off">৳ 958<br>Off</span><img class="ph" src="assets/prod-cleanser.jpg" alt="Facial cleanser" loading="lazy"></div>
+                <div class="info">
+                  <div class="nm">Gel Facial Cleanser for Normal to Oily Skin</div>
+                  <div class="pr">৳ 1283 <s>৳ 2241</s></div>
+                  <button class="atc" data-en="Add To Cart" data-bn="কার্টে যোগ করুন">Add To Cart</button>
+                </div>
+              </div>
+              <div class="prod">
+                <div class="top"><span class="off">৳ 481<br>Off</span><img class="ph" src="assets/prod-sun.jpg" alt="Sun cream" loading="lazy"></div>
+                <div class="info">
+                  <div class="nm">Tone Up Sun Cream SPF 50+ PA+++</div>
+                  <div class="pr">৳ 410 <s>৳ 891</s></div>
+                  <button class="atc" data-en="Add To Cart" data-bn="কার্টে যোগ করুন">Add To Cart</button>
+                </div>
+              </div>
+              <div class="prod">
+                <div class="top"><span class="off">৳ 350<br>Off</span><img class="ph" src="assets/prod-device.jpg" alt="Glucose meter" loading="lazy"></div>
+                <div class="info">
+                  <div class="nm">Digital Glucometer with 25 Test Strips</div>
+                  <div class="pr">৳ 700 <s>৳ 1050</s></div>
+                  <button class="atc" data-en="Add To Cart" data-bn="কার্টে যোগ করুন">Add To Cart</button>
+                </div>
+              </div>
+              <div class="prod">
+                <div class="top"><span class="off">৳ 120<br>Off</span><img class="ph" src="assets/prod-vitamin.jpg" alt="Vitamin softgels" loading="lazy"></div>
+                <div class="info">
+                  <div class="nm">Vitamin D3 2000 IU — 60 Softgels</div>
+                  <div class="pr">৳ 480 <s>৳ 600</s></div>
+                  <button class="atc" data-en="Add To Cart" data-bn="কার্টে যোগ করুন">Add To Cart</button>
+                </div>
+              </div>
             </div>
           </section>
         </div>
       </section>
 
-      <!-- ==================== CLAIM ==================== -->
-      <section class="view" id="v-claim">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1><span data-bn="ক্যাশব্যাক ক্লেইম" data-en="Cash-back claim">ক্যাশব্যাক ক্লেইম</span>
-            <span class="sub money" data-bn="এ বছর বাকি ৳৪১,৫০০" data-en="৳41,500 left this year">এ বছর বাকি ৳৪১,৫০০</span></h1>
+      <!-- ==================== 5. ORDERS ==================== -->
+      <section class="view" id="v-orders">
+        <div class="nav"><h1 data-en="My Orders" data-bn="আমার অর্ডার">My Orders</h1></div>
+        <div class="body">
+          <div class="orderrow">
+            <span class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18l-1.5 12.5a2 2 0 0 1-2 1.5H6.5a2 2 0 0 1-2-1.5Z"/><path d="M8 7V5a4 4 0 0 1 8 0v2"/></svg></span>
+            <div class="ot"><div class="o1">HealthStore · #CL-20481</div><div class="o2">3 items · ৳ 2,173</div></div>
+            <span class="pill pend" data-en="On the way" data-bn="পথে আছে">On the way</span>
+          </div>
+          <div class="orderrow">
+            <span class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v9l-3.6 6.5A2.6 2.6 0 0 0 8.6 23h6.8a2.6 2.6 0 0 0 2.2-4.5L14 12V3"/><path d="M7.6 15h8.8"/></svg></span>
+            <div class="ot"><div class="o1" data-en="Home Lab · CBC + Lipid Profile" data-bn="হোম ল্যাব · সিবিসি + লিপিড">Home Lab · CBC + Lipid Profile</div><div class="o2" data-en="Sample collected · report in 24h" data-bn="স্যাম্পল নেওয়া হয়েছে · ২৪ ঘণ্টায় রিপোর্ট">Sample collected · report in 24h</div></div>
+            <span class="pill pend" data-en="Processing" data-bn="প্রসেসিং">Processing</span>
+          </div>
+          <div class="orderrow">
+            <span class="oic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="13" height="12" rx="2.5"/><path d="m15 11 6-3.5v9L15 13"/></svg></span>
+            <div class="ot"><div class="o1">Dr. Rajib Dutta</div><div class="o2" data-en="Video consultation · 12 Aug" data-bn="ভিডিও কনসালটেশন · ১২ আগস্ট">Video consultation · 12 Aug</div></div>
+            <span class="pill ok" data-en="Completed" data-bn="সম্পন্ন">Completed</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== 6. HEALTHSTORE ==================== -->
+      <section class="view" id="v-store">
+        <header class="storehead">
+          <div class="addr">
+            <div class="txt">
+              <div class="a1">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="#E0323C" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg>
+                <span data-en="Address" data-bn="ঠিকানা">Address</span>
+              </div>
+              <div class="a2">
+                <span data-en="Delivery To" data-bn="ডেলিভারি">Delivery To</span>
+                <b data-en="Select Address" data-bn="ঠিকানা বাছুন">Select Address</b>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" style="vertical-align:middle"><path d="m6 9 6 6 6-6"/></svg>
+              </div>
+            </div>
+            <button class="cart">
+              <span class="cnt">3</span>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h3l2.6 12.4a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.5L21.5 8H6"/><circle cx="10" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/>
+              </svg>
+            </button>
+          </div>
+          <div class="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
+            </svg>
+            <span data-en="Search for products" data-bn="প্রোডাক্ট খুঁজুন">Search for products</span>
+          </div>
         </header>
 
         <div class="body">
-          <div class="card">
-            <div class="row" style="align-items:flex-start">
-              <span class="ic quiet"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h14v17l-2.3-1.6-2.4 1.6-2.3-1.6-2.4 1.6L7.3 19 5 20.5Z"/><path d="M9 8h6M9 12h6"/></svg></span>
-              <div class="grow">
-                <div class="n1 money" data-bn="৳৮,৫০০ · ল্যাবএইড, ধানমন্ডি" data-en="৳8,500 · Labaid, Dhanmondi">৳৮,৫০০ · ল্যাবএইড, ধানমন্ডি</div>
-                <div class="n2" data-bn="জমা ১৯ জুলাই · ২ দিনের মধ্যে সিদ্ধান্ত" data-en="Filed 19 Jul · decision within 2 days">জমা ১৯ জুলাই · ২ দিনের মধ্যে সিদ্ধান্ত</div>
+          <div class="tiles3">
+            <button class="tile"><svg viewBox="0 0 48 48"><use href="#tRx"/></svg>
+              <span data-en="Upload Prescription" data-bn="প্রেসক্রিপশন দিন">Upload Prescription</span></button>
+            <button class="tile"><svg viewBox="0 0 48 48"><use href="#tChat"/></svg>
+              <span data-en="Order Via Messenger" data-bn="মেসেঞ্জারে অর্ডার">Order Via Messenger</span></button>
+            <button class="tile"><svg viewBox="0 0 48 48"><use href="#tGrid"/></svg>
+              <span data-en="Explore All Products" data-bn="সব প্রোডাক্ট">Explore All Products</span></button>
+          </div>
+
+          <div class="carousel">
+            <div class="ctrack" data-carousel>
+              <div class="slide">
+                <img class="ph" src="assets/bn-beauty.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="k" data-en="K-Beauty" data-bn="কে-বিউটি">K-Beauty</span>
+                  <span class="h" data-en="Up to 60% off" data-bn="৬০% পর্যন্ত ছাড়">Up to 60% off</span>
+                  <span class="s" data-en="Limited-time collection" data-bn="সীমিত সময়ের কালেকশন">Limited-time collection</span>
+                  <span class="cta" data-en="Shop now" data-bn="কিনুন">Shop now</span>
+                </div>
               </div>
-              <span class="tag warn" data-bn="রিভিউ চলছে" data-en="Under review">রিভিউ চলছে</span>
+              <div class="slide">
+                <img class="ph" src="assets/bn-store.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="k" data-en="Free delivery" data-bn="ফ্রি ডেলিভারি">Free delivery</span>
+                  <span class="h" data-en="Over ৳1,000" data-bn="৳১,০০০ এর উপরে">Over ৳1,000</span>
+                  <span class="s" data-en="Across Dhaka, same day" data-bn="ঢাকায় একই দিনে">Across Dhaka, same day</span>
+                  <span class="cta" data-en="Order now" data-bn="অর্ডার করুন">Order now</span>
+                </div>
+              </div>
+              <div class="slide">
+                <img class="ph" src="assets/bn-mental.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="k" data-en="Mental Wellness" data-bn="মানসিক সুস্থতা">Mental Wellness</span>
+                  <span class="h" data-en="Care within reach" data-bn="যত্ন এখন হাতের নাগালে">Care within reach</span>
+                  <span class="s" data-en="Sessions from ৳200" data-bn="সেশন ৳২০০ থেকে">Sessions from ৳200</span>
+                  <span class="cta" data-en="Book now" data-bn="বুক করুন">Book now</span>
+                </div>
+              </div>
             </div>
+            <div class="dots" data-dots><i class="on"></i><i></i><i></i></div>
+          </div>
+
+          <section class="blk">
+            <div class="sechead">
+              <h2 style="display:flex;align-items:center;gap:7px">
+                <span data-en="Flash Discount" data-bn="ফ্ল্যাশ ডিসকাউন্ট">Flash Discount</span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#F5A93C" aria-hidden="true"><path d="M13 2 4 14h6l-1 8 9-12h-6Z"/></svg>
+              </h2>
+              <button class="link" data-en="View All" data-bn="সব দেখুন">View All</button>
+            </div>
+            <div class="rail">
+              <div class="promo">
+                <img class="ph" src="assets/pr-new.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="h" data-en="New Arrival" data-bn="নতুন এসেছে">New Arrival</span>
+                  <span class="s" data-en="Fresh this week" data-bn="এই সপ্তাহের নতুন">Fresh this week</span>
+                </div>
+              </div>
+              <div class="promo">
+                <img class="ph" src="assets/pr-buy.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="h" data-en="Buy More, Get More" data-bn="বেশি কিনুন, বেশি পান">Buy More, Get More</span>
+                  <span class="s" data-en="Limited time" data-bn="সীমিত সময়">Limited time</span>
+                </div>
+              </div>
+              <div class="promo">
+                <img class="ph" src="assets/pr-combo.jpg" alt="" loading="lazy">
+                <div class="cap">
+                  <span class="h" data-en="Skincare Combo" data-bn="স্কিনকেয়ার কম্বো">Skincare Combo</span>
+                  <span class="s" data-en="Save up to 40%" data-bn="৪০% পর্যন্ত সাশ্রয়">Save up to 40%</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="blk">
+            <div class="sechead"><h2 data-en="Popular Categories" data-bn="জনপ্রিয় ক্যাটাগরি">Popular Categories</h2></div>
+            <div class="cats">
+              <button class="cat"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m10.5 13.5 3-3"/><rect x="2.6" y="8.5" width="18.8" height="7" rx="3.5" transform="rotate(-45 12 12)"/></svg></span><span data-en="Medicine" data-bn="ওষুধ">Medicine</span></button>
+              <button class="cat"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8v4l-2 2v11a2 2 0 0 1-2 2h0a2 2 0 0 1-2-2V9L8 7Z"/></svg></span><span data-en="Skin Care" data-bn="স্কিন কেয়ার">Skin Care</span></button>
+              <button class="cat"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8-5-8-11a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 6-8 11-8 11Z"/></svg></span><span data-en="Wellness" data-bn="ওয়েলনেস">Wellness</span></button>
+              <button class="cat"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></span><span data-en="Baby Care" data-bn="বেবি কেয়ার">Baby Care</span></button>
+              <button class="cat"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg></span><span data-en="Devices" data-bn="ডিভাইস">Devices</span></button>
+              <button class="cat"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg></span><span data-en="Supplements" data-bn="সাপ্লিমেন্ট">Supplements</span></button>
+              <button class="cat"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v6a6 6 0 0 1-12 0Z"/><path d="M9 21h6M12 15v6"/></svg></span><span data-en="Personal Care" data-bn="পার্সোনাল কেয়ার">Personal Care</span></button>
+              <button class="cat"><span class="cic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 12 2 2 4-4"/></svg></span><span data-en="All" data-bn="সব">All</span></button>
+            </div>
+          </section>
+
+          <section class="blk">
+            <div class="sechead">
+              <h2 data-en="Best Sellers" data-bn="বেস্ট সেলার">Best Sellers</h2>
+              <button class="link" data-en="View All" data-bn="সব দেখুন">View All</button>
+            </div>
+            <div class="rail">
+              <div class="prod">
+                <div class="top"><span class="off">৳ 958<br>Off</span><img class="ph" src="assets/prod-cleanser.jpg" alt="Facial cleanser" loading="lazy"></div>
+                <div class="info">
+                  <div class="nm">Gel Facial Cleanser for Normal to Oily Skin</div>
+                  <div class="pr">৳ 1283 <s>৳ 2241</s></div>
+                  <button class="atc" data-en="Add To Cart" data-bn="কার্টে যোগ করুন">Add To Cart</button>
+                </div>
+              </div>
+              <div class="prod">
+                <div class="top"><span class="off">৳ 120<br>Off</span><img class="ph" src="assets/prod-vitamin.jpg" alt="Vitamin softgels" loading="lazy"></div>
+                <div class="info">
+                  <div class="nm">Vitamin D3 2000 IU — 60 Softgels</div>
+                  <div class="pr">৳ 480 <s>৳ 600</s></div>
+                  <button class="atc" data-en="Add To Cart" data-bn="কার্টে যোগ করুন">Add To Cart</button>
+                </div>
+              </div>
+              <div class="prod">
+                <div class="top"><span class="off">৳ 350<br>Off</span><img class="ph" src="assets/prod-device.jpg" alt="Glucose meter" loading="lazy"></div>
+                <div class="info">
+                  <div class="nm">Digital Glucometer with 25 Test Strips</div>
+                  <div class="pr">৳ 700 <s>৳ 1050</s></div>
+                  <button class="atc" data-en="Add To Cart" data-bn="কার্টে যোগ করুন">Add To Cart</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ==================== 7. ACCOUNT ==================== -->
+      <section class="view" id="v-account">
+        <div class="body" style="gap:18px">
+          <div class="profile">
+            <span class="pav"><img class="ph" src="assets/avatar-user.jpg" alt="Account holder" loading="lazy"></span>
             <div>
-              <div class="steps">
-                <div class="step done"><span class="pt"></span><span class="ln"></span></div>
-                <div class="step now"><span class="pt"></span><span class="ln"></span></div>
-                <div class="step"><span class="pt"></span><span class="ln"></span></div>
-                <div class="step"><span class="pt"></span></div>
-              </div>
-              <div class="steplabels">
-                <span data-bn="জমা" data-en="Submitted">জমা</span>
-                <span class="on" data-bn="রিভিউ" data-en="Review">রিভিউ</span>
-                <span data-bn="অনুমোদন" data-en="Approved">অনুমোদন</span>
-                <span data-bn="পরিশোধ" data-en="Paid">পরিশোধ</span>
-              </div>
+              <div class="pn">Rumana Akter</div>
+              <div class="pp">+880 1712 345 678</div>
             </div>
           </div>
 
-          <div class="divider"></div>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="নতুন ক্লেইম" data-en="New claim">নতুন ক্লেইম</h2></div>
-            <button class="upload" type="button">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16.5v-11M7.5 9.5 12 5l4.5 4.5"/><path d="M4.5 15.5v3a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2v-3"/></svg>
-              <span class="t" data-bn="বিল বা ভর্তির কাগজ তুলুন" data-en="Photograph the bill or admission slip">বিল বা ভর্তির কাগজ তুলুন</span>
-              <span class="s" data-bn="JPG বা PDF · সর্বোচ্চ ৫টি ফাইল" data-en="JPG or PDF · up to 5 files">JPG বা PDF · সর্বোচ্চ ৫টি ফাইল</span>
-            </button>
-
-            <div class="field">
-              <label data-bn="হাসপাতাল" data-en="Hospital">হাসপাতাল</label>
-              <div class="val ph">
-                <span data-bn="নেটওয়ার্ক থেকে বাছুন" data-en="Pick from the network">নেটওয়ার্ক থেকে বাছুন</span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-              </div>
-            </div>
-            <div style="display:flex;gap:10px">
-              <div class="field" style="flex:1">
-                <label data-bn="ভর্তির তারিখ" data-en="Admission date">ভর্তির তারিখ</label>
-                <div class="val ph"><span data-bn="দিন/মাস/বছর" data-en="dd/mm/yyyy">দিন/মাস/বছর</span></div>
-              </div>
-              <div class="field" style="flex:1">
-                <label data-bn="বিলের পরিমাণ" data-en="Bill amount">বিলের পরিমাণ</label>
-                <div class="val ph"><span>৳</span></div>
-              </div>
-            </div>
-
-            <div class="disclaim">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.6v.1"/></svg>
-              <span data-bn="জমা দেওয়ার পর প্রতিটি ধাপ এখানেই দেখতে পাবেন। প্রত্যাখ্যান হলে কারণ লিখে জানানো হবে।"
-                    data-en="Every step shows up right here after you file. If it's rejected, you get a written reason.">জমা দেওয়ার পর প্রতিটি ধাপ এখানেই দেখতে পাবেন। প্রত্যাখ্যান হলে কারণ লিখে জানানো হবে।</span>
-            </div>
-          </section>
-        </div>
-
-        <div class="stickyfoot">
-          <button class="btn full" type="button" data-bn="ক্লেইম জমা দিন" data-en="Submit claim">ক্লেইম জমা দিন</button>
-        </div>
-      </section>
-
-      <!-- ==================== RECORDS ==================== -->
-      <section class="view" id="v-records">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1><span data-bn="হেলথ রেকর্ড" data-en="Health records">হেলথ রেকর্ড</span>
-            <span class="sub" data-bn="এনক্রিপ্টেড · শুধু আপনার অনুমতিতে" data-en="Encrypted · shared only with your consent">এনক্রিপ্টেড · শুধু আপনার অনুমতিতে</span></h1>
-        </header>
-
-        <div class="body">
-          <div class="chips">
-            <button class="chip" type="button" aria-pressed="true" data-bn="সবাই" data-en="Everyone">সবাই</button>
-            <button class="chip" type="button" data-bn="রুমানা" data-en="Rumana">রুমানা</button>
-            <button class="chip" type="button" data-bn="নাজমা বেগম" data-en="Nazma">নাজমা বেগম</button>
-            <button class="chip" type="button" data-bn="সাফওয়ান" data-en="Safwan">সাফওয়ান</button>
-          </div>
-
-          <div class="timeline">
-            <div class="tl-date" data-bn="আজ" data-en="Today">আজ</div>
-            <div class="listcard">
-              <button class="tapp" type="button" data-go="prescription">
-                <div class="row">
-                  <span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6Z"/><path d="M14.5 3v4.5H19"/><path d="M9.5 13h5M9.5 17h3"/></svg></span>
-                  <div class="grow">
-                    <div class="n1" data-bn="ই-প্রেসক্রিপশন · ডা. তানভীর হাসান" data-en="E-prescription · Dr. Tanvir Hasan">ই-প্রেসক্রিপশন · ডা. তানভীর হাসান</div>
-                    <div class="n2" data-bn="নাজমা বেগম · রাত ৯:৪২" data-en="Nazma Begum · 9:42 PM">নাজমা বেগম · রাত ৯:৪২</div>
-                  </div>
-                  <span class="tag brand" data-bn="নতুন" data-en="New">নতুন</span>
-                </div>
+          <section>
+            <p class="grouplbl" data-en="My Prescription" data-bn="আমার প্রেসক্রিপশন">My Prescription</p>
+            <div class="group">
+              <button class="arow">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="M9 13h5M9 17h3"/></svg></span>
+                <span class="alb" data-en="My Prescriptions &amp; Reports" data-bn="প্রেসক্রিপশন ও রিপোর্ট">My Prescriptions &amp; Reports</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
               </button>
-            </div>
-
-            <div class="tl-date" data-bn="জুলাই ২০২৬" data-en="July 2026">জুলাই ২০২৬</div>
-            <div class="listcard">
-              <button class="tapp" type="button">
-                <div class="row">
-                  <span class="ic quiet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h3.5l2-5 3.5 10 2.5-7 1.8 2h4.7"/></svg></span>
-                  <div class="grow">
-                    <div class="n1" data-bn="ল্যাব রিপোর্ট · লিপিড প্রোফাইল" data-en="Lab report · Lipid profile">ল্যাব রিপোর্ট · লিপিড প্রোফাইল</div>
-                    <div class="n2" data-bn="রুমানা আক্তার · ১৪ জুলাই" data-en="Rumana Akter · 14 Jul">রুমানা আক্তার · ১৪ জুলাই</div>
-                  </div>
-                  <span class="tag warn" data-bn="২টি মান বেশি" data-en="2 values high">২টি মান বেশি</span>
-                </div>
-              </button>
-              <button class="tapp" type="button">
-                <div class="row">
-                  <span class="ic quiet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h14v17l-2.3-1.6-2.4 1.6-2.3-1.6-2.4 1.6L7.3 19 5 20.5Z"/><path d="M9 8h6M9 12h6"/></svg></span>
-                  <div class="grow">
-                    <div class="n1" data-bn="হাসপাতালের বিল · ল্যাবএইড" data-en="Hospital bill · Labaid">হাসপাতালের বিল · ল্যাবএইড</div>
-                    <div class="n2 money" data-bn="৳৮,৫০০ · ১৯ জুলাই" data-en="৳8,500 · 19 Jul">৳৮,৫০০ · ১৯ জুলাই</div>
-                  </div>
-                </div>
-              </button>
-              <button class="tapp" type="button">
-                <div class="row">
-                  <span class="ic quiet"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6Z"/><path d="M14.5 3v4.5H19"/><path d="M9.5 13h5M9.5 17h3"/></svg></span>
-                  <div class="grow">
-                    <div class="n1" data-bn="ই-প্রেসক্রিপশন · ডা. নুসরাত জাহান" data-en="E-prescription · Dr. Nusrat Jahan">ই-প্রেসক্রিপশন · ডা. নুসরাত জাহান</div>
-                    <div class="n2" data-bn="সাফওয়ান রহমান · ৮ জুলাই" data-en="Safwan Rahman · 8 Jul">সাফওয়ান রহমান · ৮ জুলাই</div>
-                  </div>
-                </div>
-              </button>
-            </div>
-          </div>
-
-          <div class="disclaim">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="flex:none;margin-top:1px"><rect x="4.5" y="10" width="15" height="10.5" rx="2.2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            <span data-bn="ডাক্তার এই রেকর্ড তখনই দেখতে পান, যখন কলের সময় আপনি অনুমতি দেন — প্রতিবার আলাদা করে।"
-                  data-en="A doctor can see these only when you grant consent during a call — separately, every time.">ডাক্তার এই রেকর্ড তখনই দেখতে পান, যখন কলের সময় আপনি অনুমতি দেন — প্রতিবার আলাদা করে।</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==================== SUPPORT ==================== -->
-      <section class="view" id="v-support">
-        <header class="nav">
-          <button class="back" type="button" data-back aria-label="Back">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
-          </button>
-          <h1 data-bn="সাপোর্ট" data-en="Support">সাপোর্ট</h1>
-        </header>
-
-        <div class="body">
-          <button class="aistrip" type="button" data-go="ai">
-            <span class="spark"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5 13.7 8 19 9.8 13.7 11.6 12 17l-1.7-5.4L5 9.8 10.3 8Z"/></svg></span>
-            <span style="flex:1;min-width:0">
-              <span style="font-size:13.5px;font-weight:600;display:block"
-                    data-bn="প্রথমে সহকারীকে জিজ্ঞেস করুন" data-en="Ask the assistant first">প্রথমে সহকারীকে জিজ্ঞেস করুন</span>
-              <span style="font-size:11px;color:var(--ink-3);display:block;margin-top:2px"
-                    data-bn="বেশিরভাগ প্রশ্নের উত্তর সাথে সাথে মেলে" data-en="Most questions get answered instantly">বেশিরভাগ প্রশ্নের উত্তর সাথে সাথে মেলে</span>
-            </span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ink-3)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 5 7 7-7 7"/></svg>
-          </button>
-
-          <section class="sec">
-            <div class="sechead"><h2 data-bn="আপনার টিকেট" data-en="Your tickets">আপনার টিকেট</h2></div>
-            <div class="card">
-              <div class="row" style="align-items:flex-start">
-                <span class="ic quiet"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3.5 20.5l1.4-5.9A8 8 0 1 1 21 12Z"/></svg></span>
-                <div class="grow">
-                  <div class="n1" data-bn="#TK-1182 · ক্লেইমের টাকা এখনো আসেনি" data-en="#TK-1182 · Claim payout not received">#TK-1182 · ক্লেইমের টাকা এখনো আসেনি</div>
-                  <div class="n2" data-bn="খোলা হয়েছে ২ ঘণ্টা আগে · রিফাত আহমেদ দেখছেন" data-en="Opened 2 hours ago · Rifat Ahmed is on it">খোলা হয়েছে ২ ঘণ্টা আগে · রিফাত আহমেদ দেখছেন</div>
-                </div>
-                <span class="tag warn" data-bn="উত্তর ৪ ঘণ্টার মধ্যে" data-en="Reply within 4 hrs">উত্তর ৪ ঘণ্টার মধ্যে</span>
-              </div>
-              <div class="meter"><i style="width:33%;background:var(--warn)"></i></div>
-            </div>
-            <div class="listcard">
-              <div class="row">
-                <span class="ic" style="background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
-                </span>
-                <div class="grow">
-                  <div class="n1" data-bn="#TK-1149 · কার্ড অ্যাক্টিভেশন" data-en="#TK-1149 · Card activation">#TK-1149 · কার্ড অ্যাক্টিভেশন</div>
-                  <div class="n2" data-bn="সহকারী নিজেই সমাধান করেছে · ১১ জুলাই" data-en="Resolved by the assistant · 11 Jul">সহকারী নিজেই সমাধান করেছে · ১১ জুলাই</div>
-                </div>
-              </div>
-              <div class="row">
-                <span class="ic" style="background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ok)">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>
-                </span>
-                <div class="grow">
-                  <div class="n1" data-bn="#TK-1103 · পরিবারের সদস্য যোগ" data-en="#TK-1103 · Adding a family member">#TK-1103 · পরিবারের সদস্য যোগ</div>
-                  <div class="n2" data-bn="সমাধান হয়েছে · ২ জুলাই" data-en="Resolved · 2 Jul">সমাধান হয়েছে · ২ জুলাই</div>
-                </div>
-              </div>
             </div>
           </section>
 
-          <div style="display:flex;gap:9px">
-            <button class="btn ghost" type="button" style="flex:1">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17.5 17.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5Z"/></svg>
-              <span data-bn="ফোনে কথা বলুন" data-en="Call us">ফোনে কথা বলুন</span>
-            </button>
-            <button class="btn" type="button" style="flex:1" data-bn="নতুন টিকেট" data-en="New ticket">নতুন টিকেট</button>
+          <section>
+            <p class="grouplbl" data-en="Subscription" data-bn="সাবস্ক্রিপশন">Subscription</p>
+            <div class="group">
+              <button class="arow" data-go="plans">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 10h18M7 15h4"/></svg></span>
+                <span class="alb" data-en="Subscription Packages" data-bn="সাবস্ক্রিপশন প্যাকেজ">Subscription Packages</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
+              </button>
+              <button class="arow">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="16" rx="2.5"/><path d="M3 9h18M8 2.5v4M16 2.5v4"/><path d="m9.5 14.5 2 2 3.5-4"/></svg></span>
+                <span class="alb" data-en="My Subscriptions" data-bn="আমার সাবস্ক্রিপশন">My Subscriptions</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
+              </button>
+            </div>
+          </section>
+
+          <section>
+            <p class="grouplbl" data-en="All Service History" data-bn="সব সার্ভিস হিস্ট্রি">All Service History</p>
+            <div class="group">
+              <button class="arow">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 3h5v6.5H21v5h-6.5V21h-5v-6.5H3v-5h6.5Z"/></svg></span>
+                <span class="alb" data-en="Instant Doctor" data-bn="ইনস্ট্যান্ট ডাক্তার">Instant Doctor</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
+              </button>
+              <button class="arow">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5"/><path d="m9.5 14 1.6 1.6L15 12"/></svg></span>
+                <span class="alb" data-en="Specialist Doctor" data-bn="স্পেশালিস্ট ডাক্তার">Specialist Doctor</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
+              </button>
+              <button class="arow" data-tab="store">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="m10.5 13.5 3-3"/><rect x="2.6" y="8.5" width="18.8" height="7" rx="3.5" transform="rotate(-45 12 12)"/></svg></span>
+                <span class="alb" data-en="HealthStore Orders" data-bn="হেলথস্টোর অর্ডার">HealthStore Orders</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
+              </button>
+              <button class="arow" data-go="labs">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/><path d="M14 3v5h5"/><circle cx="16.5" cy="15.5" r="3"/><path d="m19 18 2.5 2.5"/></svg></span>
+                <span class="alb" data-en="Home Lab" data-bn="হোম ল্যাব">Home Lab</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
+              </button>
+              <button class="arow">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M12 12c-4 0-7 3-7 7"/><path d="M17 15.5c1.6 1.6 1.6 3.4 0 5-1.6-1.6-1.6-3.4 0-5Z"/></svg></span>
+                <span class="alb" data-en="Caregiver" data-bn="কেয়ারগিভার">Caregiver</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
+              </button>
+              <button class="arow">
+                <span class="aic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M12 9v5M9.5 11.5h5"/><path d="M9 20v-4h6v4"/></svg></span>
+                <span class="alb" data-en="Surgery Booking" data-bn="সার্জারি বুকিং">Surgery Booking</span>
+                <span class="chev"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 6 6 6-6 6"/></svg></span>
+              </button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- ==================== 8. DOCTORS (View All) ==================== -->
+      <section class="view" id="v-doctors">
+        <div class="nav">
+          <button class="back" data-back aria-label="Back">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <h1 data-en="Top Doctors" data-bn="শীর্ষ ডাক্তার">Top Doctors</h1>
+        </div>
+        <div class="body">
+          <div class="chips" style="margin-left:-16px;margin-right:-16px">
+            <button class="chip" aria-pressed="true"><span data-en="All" data-bn="সব">All</span></button>
+            <button class="chip"><span data-en="Internal medicine" data-bn="ইন্টার্নাল মেডিসিন">Internal medicine</span></button>
+            <button class="chip"><span data-en="Neurology" data-bn="নিউরোলজি">Neurology</span></button>
+            <button class="chip"><span data-en="Cardiology" data-bn="কার্ডিওলজি">Cardiology</span></button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div class="doc" style="width:auto">
+              <span class="pic"><img class="ph" src="assets/doc-1.jpg" alt="Doctor portrait" loading="lazy"></span>
+              <div class="nm">Dr. Sadia Iffat Anam</div>
+              <div class="sp">General Physician</div>
+              <div class="fee">৳ 250</div>
+              <button class="bk" data-go="booking" data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট">Book Appointment</button>
+            </div>
+            <div class="doc" style="width:auto">
+              <span class="pic"><img class="ph" src="assets/doc-2.jpg" alt="Doctor portrait" loading="lazy"></span>
+              <div class="nm">Dr. Rajib Dutta</div>
+              <div class="sp">Gastroenterology</div>
+              <div class="fee">৳ 600</div>
+              <button class="bk" data-go="booking" data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট">Book Appointment</button>
+            </div>
+            <div class="doc" style="width:auto">
+              <span class="pic"><img class="ph" src="assets/doc-3.jpg" alt="Doctor portrait" loading="lazy"></span>
+              <div class="nm">Dr. Nusrat Jahan</div>
+              <div class="sp">Dermatology</div>
+              <div class="fee">৳ 500</div>
+              <button class="bk" data-go="booking" data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট">Book Appointment</button>
+            </div>
+            <div class="doc" style="width:auto">
+              <span class="pic"><img class="ph" src="assets/doc-4.jpg" alt="Doctor portrait" loading="lazy"></span>
+              <div class="nm">Dr. Imran Kabir</div>
+              <div class="sp">Cardiology</div>
+              <div class="fee">৳ 800</div>
+              <button class="bk" data-go="booking" data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট">Book Appointment</button>
+            </div>
           </div>
         </div>
       </section>
 
+      <!-- ==================== 9. BOOKING ==================== -->
+      <section class="view" id="v-booking">
+        <div class="nav">
+          <button class="back" data-back aria-label="Back">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <h1 data-en="Book Appointment" data-bn="অ্যাপয়েন্টমেন্ট নিন">Book Appointment</h1>
+        </div>
+        <div class="body">
+          <div class="doc" style="width:auto">
+            <span class="pic"><img class="ph" src="assets/doc-2.jpg" alt="Doctor portrait" loading="lazy"></span>
+            <div class="nm">Dr. Rajib Dutta</div>
+            <div class="sp">Gastroenterology · MBBS, FCPS</div>
+            <div class="fee">৳ 600</div>
+          </div>
+          <section class="blk">
+            <div class="sechead"><h2 data-en="Pick a slot" data-bn="সময় বাছুন">Pick a slot</h2></div>
+            <div class="chips" style="margin-left:-16px;margin-right:-16px">
+              <button class="chip" aria-pressed="true">Today · 4:30 PM</button>
+              <button class="chip">Today · 6:00 PM</button>
+              <button class="chip">Tomorrow · 10:00 AM</button>
+            </div>
+          </section>
+          <button class="btn-primary" data-back data-en="Confirm &amp; Pay ৳600" data-bn="কনফার্ম করে ৳৬০০ দিন">Confirm &amp; Pay ৳600</button>
+        </div>
+      </section>
+
+      <!-- ==================== 10. HOME LAB ==================== -->
+      <section class="view" id="v-labs">
+        <div class="nav">
+          <button class="back" data-back aria-label="Back">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <h1 data-en="Home Lab Tests" data-bn="হোম ল্যাব টেস্ট">Home Lab Tests</h1>
+        </div>
+        <div class="body">
+          <div class="orderrow"><span class="oic">CBC</span><div class="ot"><div class="o1">Complete Blood Count</div><div class="o2" data-en="Report in 24h" data-bn="২৪ ঘণ্টায় রিপোর্ট">Report in 24h</div></div><b>৳ 450</b></div>
+          <div class="orderrow"><span class="oic">LP</span><div class="ot"><div class="o1">Lipid Profile</div><div class="o2" data-en="Fasting required" data-bn="খালি পেটে">Fasting required</div></div><b>৳ 900</b></div>
+          <div class="orderrow"><span class="oic">TSH</span><div class="ot"><div class="o1">Thyroid (TSH)</div><div class="o2" data-en="Report in 48h" data-bn="৪৮ ঘণ্টায় রিপোর্ট">Report in 48h</div></div><b>৳ 750</b></div>
+          <button class="btn-primary" data-back data-en="Book Home Collection" data-bn="হোম কালেকশন বুক করুন">Book Home Collection</button>
+        </div>
+      </section>
+
+      <!-- ==================== 11. PLANS ==================== -->
+      <section class="view" id="v-plans">
+        <div class="nav">
+          <button class="back" data-back aria-label="Back">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <h1 data-en="Subscription Packages" data-bn="সাবস্ক্রিপশন প্যাকেজ">Subscription Packages</h1>
+        </div>
+        <div class="body">
+          <div class="orderrow" style="align-items:flex-start;flex-direction:column;gap:8px">
+            <div style="display:flex;width:100%;align-items:center;gap:10px">
+              <b style="font-size:17px">Silver</b><span class="sp" style="flex:1"></span><b style="font-size:17px">৳ 499<span style="font-size:12px;color:var(--ink-3);font-weight:500">/mo</span></b>
+            </div>
+            <div class="o2" data-en="4 instant consultations · 10% lab discount" data-bn="৪টি ইনস্ট্যান্ট কনসালটেশন · ১০% ল্যাব ছাড়">4 instant consultations · 10% lab discount</div>
+          </div>
+          <div class="orderrow" style="align-items:flex-start;flex-direction:column;gap:8px;border-color:var(--cy);box-shadow:0 0 0 2px var(--cy-tint)">
+            <div style="display:flex;width:100%;align-items:center;gap:10px">
+              <b style="font-size:17px">Gold</b><span class="pill ok">Popular</span><span class="sp" style="flex:1"></span><b style="font-size:17px">৳ 999<span style="font-size:12px;color:var(--ink-3);font-weight:500">/mo</span></b>
+            </div>
+            <div class="o2" data-en="Unlimited instant · 2 specialist · 20% lab · family up to 3" data-bn="আনলিমিটেড ইনস্ট্যান্ট · ২ স্পেশালিস্ট · ২০% ল্যাব · ৩ জন পরিবার">Unlimited instant · 2 specialist · 20% lab · family up to 3</div>
+          </div>
+          <div class="orderrow" style="align-items:flex-start;flex-direction:column;gap:8px">
+            <div style="display:flex;width:100%;align-items:center;gap:10px">
+              <b style="font-size:17px">Platinum</b><span class="sp" style="flex:1"></span><b style="font-size:17px">৳ 1,899<span style="font-size:12px;color:var(--ink-3);font-weight:500">/mo</span></b>
+            </div>
+            <div class="o2" data-en="Everything in Gold · caregiver credits · family up to 5" data-bn="গোল্ডের সব · কেয়ারগিভার ক্রেডিট · ৫ জন পরিবার">Everything in Gold · caregiver credits · family up to 5</div>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /stack -->
+
+    <!-- ==================== doctor bottom sheet ==================== -->
+    <div class="scrim" data-sheet-close></div>
+    <div class="sheet" role="dialog" aria-label="Consult a doctor">
+      <h2 data-en="Want to consult a Doctor?" data-bn="ডাক্তার দেখাতে চান?">Want to consult a Doctor?</h2>
+      <div class="svcgrid">
+        <button class="svc" data-go="doctors">
+          <div class="t1" data-en="Instant" data-bn="ইনস্ট্যান্ট">Instant</div>
+          <div class="t2" data-en="MBBS Doctor" data-bn="এমবিবিএস ডাক্তার">MBBS Doctor</div>
+          <div class="price">৳ 50.00 <s>৳ 200.00</s></div>
+          <span class="art"><img class="ph" src="assets/svc-instant.jpg" alt="Two doctors" loading="lazy"></span>
+        </button>
+        <button class="svc b" data-go="doctors">
+          <div class="t1" data-en="Specialist" data-bn="স্পেশালিস্ট">Specialist</div>
+          <div class="t2" data-en="Doctor" data-bn="ডাক্তার">Doctor</div>
+          <span class="art"><img class="ph" src="assets/svc-specialist.jpg" alt="Specialist doctor" loading="lazy"></span>
+        </button>
+      </div>
     </div>
 
-    <!-- ==================== TAB BAR ==================== -->
-    <nav class="tabbar">
-      <button class="tab" type="button" aria-current="page" data-tab="home">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/></svg>
-        <span data-bn="হোম" data-en="Home">হোম</span>
+    <!-- ==================== tab bar ==================== -->
+    <nav class="tabbar" id="tabbar">
+      <button class="tab" data-tab="home" aria-current="page">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10l8-6 8 6v10a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1Z"/></svg>
+        <span data-en="Home" data-bn="হোম">Home</span>
       </button>
-      <button class="tab" type="button" data-tab="doctors">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg>
-        <span data-bn="ডাক্তার" data-en="Doctors">ডাক্তার</span>
+      <button class="tab" data-tab="orders">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 3h6v3H9z"/><path d="M9 11h6M9 15h4"/></svg>
+        <span data-en="Orders" data-bn="অর্ডার">Orders</span>
       </button>
-      <button class="tab" type="button" data-tab="records">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6Z"/><path d="M14.5 3v4.5H19"/><path d="M9.5 13h5M9.5 17h3"/></svg>
-        <span data-bn="রেকর্ড" data-en="Records">রেকর্ড</span>
+      <button class="tab center" data-sheet-open>
+        <span class="fab">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 3v6a5 5 0 0 0 10 0V3"/><path d="M11 14v2a4 4 0 0 0 8 0v-1"/><circle cx="19" cy="12.5" r="2.4"/>
+          </svg>
+        </span>
+        <span data-en="Doctor" data-bn="ডাক্তার">Doctor</span>
       </button>
-      <button class="tab" type="button" data-tab="support">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 15.5V12a8.5 8.5 0 0 0-17 0v3.5"/><rect x="2.5" y="14" width="4" height="6" rx="1.8"/><rect x="17.5" y="14" width="4" height="6" rx="1.8"/></svg>
-        <span data-bn="সাপোর্ট" data-en="Support">সাপোর্ট</span>
+      <button class="tab" data-tab="store">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="m10.5 13.5 3-3"/><rect x="2.6" y="8.5" width="18.8" height="7" rx="3.5" transform="rotate(-45 12 12)"/></svg>
+        <span data-en="HealthStore" data-bn="হেলথস্টোর">HealthStore</span>
       </button>
-      <button class="tab" type="button" data-tab="card">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 14.5h4"/></svg>
-        <span data-bn="কার্ড" data-en="Card">কার্ড</span>
+      <button class="tab" data-tab="account">
+        <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="10" r="3.2"/><path d="M6.5 19a6 6 0 0 1 11 0"/></svg>
+        <span data-en="Account" data-bn="অ্যাকাউন্ট">Account</span>
       </button>
     </nav>
 
@@ -1686,96 +1274,124 @@
 </div>
 
 <script>
-  /* ---------- QR blocks ---------- */
-  (function () {
-    var N = 21, cell = 100 / N, body = '';
-    function seeded(i){ var x = Math.sin(i*12.9898)*43758.5453; return x - Math.floor(x); }
-    function isFinder(r,c){ return (r<7&&c<7)||(r<7&&c>N-8)||(r>N-8&&c<7); }
-    for (var r=0;r<N;r++) for (var c=0;c<N;c++){
-      if (isFinder(r,c)) continue;
-      if (seeded(r*N+c) > 0.52)
-        body += '<rect x="'+(c*cell)+'" y="'+(r*cell)+'" width="'+cell+'" height="'+cell+'" fill="#0A3D31"/>';
-    }
-    function finder(x,y){
-      var u = cell;
-      return '<rect x="'+x*u+'" y="'+y*u+'" width="'+7*u+'" height="'+7*u+'" fill="#0A3D31"/>'
-           + '<rect x="'+(x+1)*u+'" y="'+(y+1)*u+'" width="'+5*u+'" height="'+5*u+'" fill="#F4F8F5"/>'
-           + '<rect x="'+(x+2)*u+'" y="'+(y+2)*u+'" width="'+3*u+'" height="'+3*u+'" fill="#0A3D31"/>';
-    }
-    var svg = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">'
-            + body + finder(0,0) + finder(N-7,0) + finder(0,N-7) + '</svg>';
-    document.querySelectorAll('[data-qr]').forEach(function(el){ el.innerHTML = svg; });
-  })();
+/* ------------------------------------------------------------------ router */
+(function () {
+  var screen = document.getElementById('screen');
+  var tabbar = document.getElementById('tabbar');
+  var views  = document.querySelectorAll('.view');
+  var tabs   = document.querySelectorAll('.tab[data-tab]');
 
-  /* ---------- router ---------- */
-  (function () {
-    var screen  = document.getElementById('screen');
-    var views   = document.querySelectorAll('.view');
-    var tabs    = document.querySelectorAll('.tab');
-    var tabbed  = { home:1, doctors:1, records:1, support:1, card:1 };
-    var immersive = { call:1 };
-    var stackHist = ['home'];
+  /* screens that own a tab-bar slot — visiting one resets the back stack */
+  var tabbed = { home:1, orders:1, store:1, account:1 };
+  /* pre-auth screens run full-bleed with no tab bar */
+  var chromeless = { splash:1, onboard:1, login:1 };
+  /* screens whose top area is a light photo, so the clock stays dark */
+  var lightStatus = { onboard:1 };
 
-    function show(id, push) {
-      var target = document.getElementById('v-' + id);
-      if (!target) return;
-      views.forEach(function(v){ v.classList.remove('on'); });
-      target.classList.add('on');
-      screen.classList.toggle('immersive', !!immersive[id]);
+  var hist = ['splash'];
 
-      var b = target.querySelector('.body');
-      if (b) b.scrollTop = 0;
+  function show(id, push) {
+    var target = document.getElementById('v-' + id);
+    if (!target) return;
 
-      tabs.forEach(function(t){
-        if (t.dataset.tab === id) t.setAttribute('aria-current','page');
-        else t.removeAttribute('aria-current');
-      });
+    views.forEach(function (v) { v.classList.remove('on'); });
+    target.classList.add('on');
 
-      if (push !== false) {
-        if (tabbed[id]) stackHist = [id];
-        else if (stackHist[stackHist.length-1] !== id) stackHist.push(id);
-      }
-    }
+    tabbar.style.display = chromeless[id] ? 'none' : '';
+    screen.classList.toggle('onlight', !lightStatus[id]);
+    closeSheet();
 
-    document.addEventListener('click', function (e) {
-      var go = e.target.closest('[data-go]');
-      if (go) { show(go.dataset.go); return; }
+    var b = target.querySelector('.body, .login');
+    if (b) b.scrollTop = 0;
 
-      var back = e.target.closest('[data-back]');
-      if (back) {
-        stackHist.pop();
-        show(stackHist[stackHist.length-1] || 'home', false);
-        return;
-      }
-
-      var tab = e.target.closest('[data-tab]');
-      if (tab) { show(tab.dataset.tab); return; }
+    tabs.forEach(function (t) {
+      if (t.dataset.tab === id) t.setAttribute('aria-current', 'page');
+      else t.removeAttribute('aria-current');
     });
-  })();
 
-  /* ---------- language ---------- */
-  (function () {
-    var nodes = document.querySelectorAll('[data-bn][data-en]');
-    function apply(lang) {
-      nodes.forEach(function (n) { n.innerHTML = lang === 'bn' ? n.dataset.bn : n.dataset.en; });
-      document.querySelectorAll('.langtog button').forEach(function (b) {
-        b.setAttribute('aria-pressed', b.dataset.lang === lang);
-      });
-      document.documentElement.lang = lang;
+    if (push !== false) {
+      if (tabbed[id]) hist = [id];
+      else if (hist[hist.length - 1] !== id) hist.push(id);
     }
-    document.addEventListener('click', function (e) {
-      var b = e.target.closest('.langtog button');
-      if (b) apply(b.dataset.lang);
-    });
-  })();
+  }
 
-  /* ---------- chip groups ---------- */
-  document.querySelectorAll('.chips').forEach(function (group) {
-    group.addEventListener('click', function (e) {
-      var c = e.target.closest('.chip');
-      if (!c) return;
-      group.querySelectorAll('.chip').forEach(function (o) { o.removeAttribute('aria-pressed'); });
-      c.setAttribute('aria-pressed', 'true');
-    });
+  function closeSheet() { screen.classList.remove('sheeton'); }
+
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-sheet-open]')) { screen.classList.add('sheeton'); return; }
+    if (e.target.closest('[data-sheet-close]')) { closeSheet(); return; }
+
+    var go = e.target.closest('[data-go]');
+    if (go) { show(go.dataset.go); return; }
+
+    var back = e.target.closest('[data-back]');
+    if (back) { hist.pop(); show(hist[hist.length - 1] || 'home', false); return; }
+
+    var tab = e.target.closest('[data-tab]');
+    if (tab) { show(tab.dataset.tab); return; }
   });
+
+  /* splash auto-advances the way the real app does */
+  setTimeout(function () {
+    if (document.getElementById('v-splash').classList.contains('on')) show('onboard');
+  }, 1900);
+
+  show('splash', false);
+})();
+
+/* ---------------------------------------------------------------- language */
+(function () {
+  var nodes = document.querySelectorAll('[data-en][data-bn]');
+  function apply(lang) {
+    nodes.forEach(function (n) { n.innerHTML = lang === 'bn' ? n.dataset.bn : n.dataset.en; });
+    document.querySelectorAll('.langtog button').forEach(function (b) {
+      b.setAttribute('aria-pressed', b.dataset.lang === lang);
+    });
+    document.documentElement.lang = lang;
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('.langtog button');
+    if (b) apply(b.dataset.lang);
+  });
+})();
+
+/* ------------------------------------------------------------- chip groups */
+document.querySelectorAll('.chips').forEach(function (group) {
+  group.addEventListener('click', function (e) {
+    var c = e.target.closest('.chip');
+    if (!c) return;
+    group.querySelectorAll('.chip').forEach(function (o) { o.removeAttribute('aria-pressed'); });
+    c.setAttribute('aria-pressed', 'true');
+  });
+});
+
+/* --------------------------------------------------------------- carousels */
+document.querySelectorAll('[data-carousel]').forEach(function (track) {
+  var dots = track.parentElement.querySelector('[data-dots]');
+  var slides = track.children;
+  var i = 0, timer;
+
+  function step() { return slides[0] ? slides[0].offsetWidth + 10 : 0; }
+
+  function paint(n) {
+    if (!dots) return;
+    Array.prototype.forEach.call(dots.children, function (d, k) { d.classList.toggle('on', k === n); });
+  }
+
+  track.addEventListener('scroll', function () {
+    var s = step(); if (!s) return;
+    var n = Math.round(track.scrollLeft / s);
+    if (n !== i) { i = n; paint(i); }
+  }, { passive: true });
+
+  function play() {
+    timer = setInterval(function () {
+      i = (i + 1) % slides.length;
+      track.scrollTo({ left: i * step(), behavior: 'smooth' });
+      paint(i);
+    }, 3800);
+  }
+  track.addEventListener('pointerdown', function () { clearInterval(timer); });
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches) play();
+});
 </script>
